@@ -9,9 +9,6 @@ const App = ({ isLogged }) => (
     <Layout>
       <Switch>
         <Route exact path='/' component={HomePage} />
-        {/* <Route exact path='/player/:id' component={isLogged ? Player : Login} />
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/register' component={Register} /> */}
         <Route component={NotFound} />
       </Switch>
     </Layout>
