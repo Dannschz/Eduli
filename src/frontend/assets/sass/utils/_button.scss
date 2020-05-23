@@ -1,0 +1,89 @@
+.btn {
+  border: none;
+  color: $white;
+  padding: 12px;
+  cursor: pointer;
+  text-align: center;
+  align-self: center;
+  justify-self: center;
+  background: $primary-color;
+  font-size: $font-size-base;
+  border-radius: $border-radius;
+
+  &-outline {
+    background: $white;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+  }
+
+  &-link {
+    border: none;
+    background: none;
+    color: $primary-color;
+    font-weight: $font-weight-bold;
+  }
+
+  &-social {
+    border: none;
+    background: none;
+    color: $primary-color;
+    font-weight: $font-weight-bold;
+  }
+
+  &-social-circular {
+    border-radius: $circle-radius;
+  }
+
+  &-xxl {
+    padding: 16px;
+    font-size: $font-size-xxl;
+  }
+
+  &-xl {
+    padding: 16px;
+    font-size: $font-size-xl;
+  }
+
+  &-lg {
+    padding: 14px;
+    font-size: $font-size-lg;
+  }
+
+  &-md {
+    padding: 12px;
+    font-size: $font-size-md;
+  }
+
+  &-sm {
+    padding: 10px;
+    font-size: $font-size-sm;
+  }
+
+  &-xs {
+    padding: 8px;
+    font-size: $font-size-xs;
+  }
+}
+
+@each $name, $color in $theme-colors {
+  .btn-#{$name} {
+    background: $color;
+    // &:hover {
+    //   background: darken($color, 2%);
+    // }
+  }
+
+  // .btn-#{$name}-darken {
+  //   background: darken($color, 2%);
+  //   &:hover {
+  //     background: darken($color, 5%);
+  //   }
+  // }
+
+  // .btn-#{$name}-lighten {
+  //   background: lighten($color, 5%);
+  //   &:hover {
+  //     background: $color;
+  //   }
+  // }
+}
