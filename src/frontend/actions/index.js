@@ -1,21 +1,21 @@
 import axios from 'axios';
 
-export const loginRequest = payload => ({
+export const loginRequest = (payload) => ({
   type: 'LOGIN_REQUEST',
   payload,
 });
 
-export const logoutRequest = payload => ({
+export const logoutRequest = (payload) => ({
   type: 'LOGOUT_REQUEST',
   payload,
 });
 
-export const registerRequest = payload => ({
+export const registerRequest = (payload) => ({
   type: 'REGISTER_REQUEST',
   payload,
 });
 
-export const setError = payload => ({
+export const setError = (payload) => ({
   type: 'SET_ERROR',
   payload,
 });
@@ -27,7 +27,7 @@ export const registerUser = (payload, redirectUrl) => {
       .then(() => {
         window.location.href = redirectUrl;
       })
-      .catch(error => dispatch(setError(error)));
+      .catch((error) => dispatch(setError(error)));
   };
 };
 
@@ -50,6 +50,6 @@ export const loginUser = ({ email, password }, redirectUrl) => {
       .then(() => {
         window.location.href = redirectUrl;
       })
-      .catch(err => dispatch(setError(err)));
+      .catch((err) => dispatch(setError(err)));
   };
 };

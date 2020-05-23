@@ -13,9 +13,9 @@ import cookieParser from 'cookie-parser';
 import boom from '@hapi/boom';
 import passport from 'passport';
 import axios from 'axios';
-import reducer from '../frontend/src/reducers';
-import Layout from '../frontend/src/components/Layout';
-import serverRoutes from '../frontend/src/routes/serverRoutes';
+import reducer from '../frontend/reducers';
+import Layout from '../frontend/components/Layout';
+import serverRoutes from '../frontend/routes/serverRoutes';
 import getManifest from './getManifest';
 import { ENV, PORT, API_URL } from './config/config';
 

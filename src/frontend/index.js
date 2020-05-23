@@ -5,9 +5,9 @@ import { createBrowserHistory } from 'history';
 import { Provider } from 'react-redux';
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import reducer from './src/reducers';
-import App from './src/routes/App';
-import './assets/sass/style.scss';
+import reducer from './reducers';
+import App from './routes/App';
+import './assets/styles/style.scss';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const preloadedState = window.__PRELOADED_STATE__;
