@@ -1,0 +1,23 @@
+@each $name, $color in $theme-colors {
+  .background-#{$name} {
+    background: $color;
+  }
+
+  @if (type-of($color) == 'color') {
+    .background-#{$name}-darken {
+      background: darken($color, 2%);
+    }
+
+    .background-#{$name}-lighten {
+      background: lighten($color, 2%);
+    }
+
+    .background-#{$name}-thin {
+      background: rgba($color, 0.8);
+    }
+
+    .background-#{$name}-thinner {
+      background: rgba($color, 0.5);
+    }
+  }
+}

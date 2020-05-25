@@ -66,24 +66,27 @@
 }
 
 @each $name, $color in $theme-colors {
-  .btn-#{$name} {
-    background: $color;
-    // &:hover {
-    //   background: darken($color, 2%);
-    // }
+
+  @if (type-of($color) == 'color') {
+    .btn-#{$name} {
+      background: $color;
+      &:hover {
+        background: darken($color, 2%);
+      }
+    }
+
+    .btn-#{$name}-darken {
+      background: darken($color, 2%);
+      &:hover {
+        background: darken($color, 5%);
+      }
+    }
+
+    .btn-#{$name}-lighten {
+      background: lighten($color, 5%);
+      &:hover {
+        background: $color;
+      }
+    }
   }
-
-  // .btn-#{$name}-darken {
-  //   background: darken($color, 2%);
-  //   &:hover {
-  //     background: darken($color, 5%);
-  //   }
-  // }
-
-  // .btn-#{$name}-lighten {
-  //   background: lighten($color, 5%);
-  //   &:hover {
-  //     background: $color;
-  //   }
-  // }
 }

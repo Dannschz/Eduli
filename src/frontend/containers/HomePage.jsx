@@ -1,7 +1,7 @@
 import React from 'react';
 import BlogCard1 from '../components/BlogCard1';
 import Image from '../assets/static/card3.jpg';
-import '../assets/styles/pages/HomePage.scss';
+import '../assets/sass/pages/HomePage.scss';
 
 export default function HomePage(props) {
   return (
