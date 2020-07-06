@@ -1,0 +1,23 @@
+.badge {
+  @include badge($white, $primary-color);
+}
+
+@each $name, $color in $theme-colors {
+  @if (type-of($color) == 'color') {
+    .badge-#{$name} {
+      @include badge($white, $color);
+    }
+  }
+}
+
+.badge {
+  &-xl { padding: 0.5rem 0.8rem; }
+  &-lg { padding: 0.3rem 0.6rem; }
+  &-md { padding: $badge-padding-y $badge-padding-x; }
+  &-sm { font-size: .750rem; }
+  &-xs { padding: 0.09rem 0.2rem; font-size: .700rem; }
+}
+
+.badge-light, .badge-soft, .badge-white {
+  color: $dark;
+}

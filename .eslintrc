@@ -201,6 +201,16 @@
     "vars-on-top": 2,
     "wrap-iife": [2, "any"],
     "wrap-regex": 0,
-    "yoda": [2, "never"]
+    "yoda": [2, "never"],
+    "jsx-a11y/label-has-associated-control": [ "error", {
+      "required": {
+        "some": [ "nesting", "id"  ]
+      }
+    }],
+    "jsx-a11y/label-has-for": [ "error", {
+      "required": {
+        "some": [ "nesting", "id"  ]
+      }
+    }]
   }
 }

@@ -63,6 +63,9 @@
 *.3dm
 *.max
 
+# mp4
+*.mp4
+
 ### Node ###
 # Logs
 logs

@@ -1,5 +1,23 @@
 require('dotenv').config();
 
-const { ENV, PORT, API_URL, API_KEY_TOKEN } = process.env;
+const {
+  ENV,
+  PORT,
+  API_URL,
+  ADMIN_API_KEYS_TOKEN,
+  MANAGER_API_KEYS_TOKEN,
+  TEACHER_API_KEYS_TOKEN,
+  STUDENT_API_KEYS_TOKEN,
+  PUBLIC_API_KEYS_TOKEN,
+} = process.env;
 
-module.exports = { ENV, PORT, API_URL, API_KEY_TOKEN };
+module.exports = {
+  ENV,
+  PORT,
+  API_URL,
+  ADMIN_API_KEYS_TOKEN,
+  MANAGER_API_KEYS_TOKEN,
+  TEACHER_API_KEYS_TOKEN,
+  STUDENT_API_KEYS_TOKEN,
+  PUBLIC_API_KEYS_TOKEN,
+};

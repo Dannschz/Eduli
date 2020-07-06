@@ -1,0 +1,18 @@
+.breadcrumb {
+  @include breadcrums($gray-400, $primary-color);
+}
+
+@each $name, $color in $theme-colors {
+  @if (type-of($color) == 'color') {
+    .breadcrumb-#{$name} {
+      @include breadcrums($gray-400, $color);
+    }
+  }
+}
+
+.breadcrumb-soft, .breadcrumb-white, .breadcrumb-light {
+  color: $black;
+  a {
+    color: $black;
+  }
+}

@@ -1,0 +1,17 @@
+@mixin badge($color, $background) {
+  color: $color;
+  background: $background;
+  font-size: $badge-font-size;
+  border-radius: $border-radius;
+  @include shadow($background);
+  padding: $badge-padding-y $badge-padding-x;
+  text-align: center;
+  width: fit-content;
+  height: fit-content;
+  font-weight: $badge-font-weight;
+  text-transform: capitalize;
+  transition: $transition-base;
+  &:hover {
+    background: darken($background, 5%);
+  }
+}

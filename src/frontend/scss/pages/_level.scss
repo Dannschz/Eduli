@@ -1,0 +1,138 @@
+.Level {
+  & .go-back {
+    position: absolute;
+    top: 60px;
+    left: 80px;
+  }
+  &__header {
+    padding: 50px 250px;
+    grid-template-columns: 0.1fr 1fr 0.5fr;
+    grid-template-areas:
+      "image title actions"
+      "details details actions";
+    &--image {
+      grid-area: image;
+      width: 80px;
+      height: 80px;
+      // background: $white;
+      // color: $secondary-color;
+      border-radius: $circle-radius;
+      box-shadow: $box-shadow;
+    }
+
+    &--image i {
+      font-size: $font-size-xxl;
+    }
+
+    &--image img {
+      // width: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    &--title {
+      grid-area: title;
+      padding-left: 20px;
+    }
+
+    &--details {
+      grid-area: details;
+      padding-top: 20px;
+    }
+
+    &--actions {
+      grid-area: actions;
+    }
+  }
+
+  &__body {
+    grid-template-columns: 0.5fr 1fr;
+    padding: 50px 250px;
+
+    &--courses {
+      padding-right: 80px;
+    }
+
+    &--details {
+      grid-template-rows: repeat(4, 1fr);
+    }
+  }
+
+  &__footer {
+    padding: 100px 250px;
+    padding-bottom: 150px;
+    &--title {
+      padding-bottom: 50px;
+    }
+    & .column--3 {
+      column-gap: 25px;
+    }
+  }
+}
+
+.basic, .intermediate, .advanced {
+  &--title {
+    grid-template-columns: 0.2fr 1fr;
+  }
+}
+
+.levels--icon {
+  width: 50px;
+  height: 50px;
+  // background: $tertiary-color;
+  border-radius: $circle-radius;
+  box-shadow: $box-shadow;
+  color: $white;
+}
+
+.basic--title, .intermediate--title, .advanced--title {
+  font-weight: 600;
+  & p {
+    font-size: $font-size-xl;
+    text-decoration: underline;
+  }
+}
+
+.course--icon {
+  // justify-self: center;
+  // box-shadow: $box-shadow;
+  // background: $primary-color;
+  padding-right: 10px;
+  & i {
+    color: $white;
+    border-radius: $circle-radius;
+    background: $primary-color;
+    padding: 10px;
+  }
+}
+
+.courses {
+  grid-template-columns: 0.16fr 1fr;
+  padding: 10px 12px;
+  & span {
+    font-size: $font-size-xs;
+  }
+
+  & p {
+    padding-left: 10px;
+  }
+
+  &--basic {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+
+  &--intermediate {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+
+  &--advanced {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+}
+
+.details--button button {
+  width: 100%;
+}

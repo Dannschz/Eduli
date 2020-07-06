@@ -1,0 +1,29 @@
+.VideoPlayer {
+  padding-left: 50px;
+  padding-bottom: 50px;
+  grid-template-areas:
+    "video preview"
+    "info preview"
+    "otro preview";
+
+  &--player {
+    grid-area: video;
+  }
+
+  &__preview {
+    grid-area: preview;
+  }
+
+  &__info {
+    grid-area: info;
+    padding-top: 10px;
+    width: 60vw;
+    & .btn-group {
+      margin: 0;
+    }
+
+    &--description {
+      padding: 50px 0;
+    }
+  }
+}

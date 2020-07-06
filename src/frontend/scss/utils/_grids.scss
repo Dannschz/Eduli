@@ -1,0 +1,123 @@
+$breakpoints-width: (
+  'xl': 2560px,
+  'lg': 1920px,
+  'md': 1024px,
+  'sm': 768px,
+  'xs': 640px,
+);
+
+$breakpoints-height: (
+  'xl': 1980px,
+  'lg': 1080px,
+  'md': 768px,
+  'sm': 480px,
+  'xs': 360px,
+);
+
+$gap: (
+  'xl': 50px,
+  'lg': 35px,
+  'md': 25px,
+  'sm': 15px,
+  'xs': 5px,
+);
+
+main, section, article, div, form, header, footer, ul,  li, nav, form, table, .grid, .section, .container  {
+  display: grid;
+}
+
+@mixin verticalStart {
+  align-self: flex-start !important;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+@mixin verticalCenter {
+  align-self: center !important;
+  align-items: center;
+  align-content: center;
+}
+
+@mixin verticalEnd {
+  align-self: flex-end !important;
+  align-items: flex-end;
+  align-content: flex-end;
+}
+
+@mixin horizontalRight {
+  justify-self: right !important;
+  justify-items: right;
+  justify-content: right;
+}
+
+@mixin horizontalCenter {
+  justify-self: center !important;
+  justify-items: center;
+  justify-content: center;
+}
+
+@mixin horizontalLeft {
+  justify-self: left !important;
+  justify-items: left;
+  justify-content: left;
+}
+
+.v-start { @include verticalStart(); }
+
+.v-center { @include verticalCenter(); }
+
+.v-end { @include verticalEnd(); }
+
+.right { @include horizontalRight(); }
+
+.center { @include horizontalCenter(); }
+
+.left { @include horizontalLeft(); }
+
+@function createColumns($amount, $size: 1fr) {
+  $result: repeat($amount, $size);
+
+  @return $result;
+}
+
+@function createRows($amount) {
+  $size: percentage( 1 / $amount );
+  $result: repeat($amount, $size);
+
+  @return $result;
+}
+
+@for $i from 1 through 12 {
+  .column-#{$i} { grid-template-columns: createColumns($i); }
+  .column-start-#{$i} { grid-column-start: $i; }
+  .column-end-#{$i} { grid-column-end: span $i; }
+  .row-#{$i} { grid-template-rows: createRows($i); }
+  .row-start-#{$i} { grid-row-start: $i; }
+  .row-end-#{$i} { grid-row-end: span $i; }
+}
+
+@each $name, $width in $gap {
+  .column-gap-#{$name} { column-gap: $width; }
+  .row-gap-#{$name} { row-gap: $width; }
+  .gap-#{$name} { gap: $width; }
+}
+
+@each $name, $width in $breakpoints-width {
+  @media (max-width: $width) {
+    @for $i from 1 to 12 {
+      .column-#{$name}-#{$i} { grid-template-columns: createColumns($i); }
+      .column-start-#{$name}-#{$i} { grid-column-start: $i; }
+      .column-end-#{$name}-#{$i} { grid-column-end: span $i; }
+      .row-#{$name}-#{$i} { grid-template-rows: createRows($i); }
+      .row-start-#{$name}-#{$i} { grid-row-start: $i; }
+      .row-end-#{$name}-#{$i} { grid-row-end: span $i; }
+    }
+
+    .v-start-#{$name} { @include verticalStart(); }
+    .v-center-#{$name} { @include verticalCenter(); }
+    .v-end-#{$name} { @include verticalEnd(); }
+    .right-#{$name} { @include horizontalRight(); }
+    .center-#{$name} { @include horizontalCenter(); }
+    .left-#{$name} { @include horizontalLeft(); }
+  }
+}

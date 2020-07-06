@@ -1,0 +1,46 @@
+.VideoCard {
+  grid-template-columns: 0.6fr 1fr 0.4fr;
+  padding: 20px 50px;
+
+  & img {
+    border-radius: $border-radius;
+  }
+
+  &__body {
+    padding-left: 15px;
+
+    &--title {
+      font-size: $h4-font-size;
+      font-weight: 600;
+      padding: 5px 0;
+    }
+
+    &--description {
+      padding: 5px 0;
+      // padding-right: 50px;
+      font-weight: 100;
+    }
+
+    &--info {
+      padding: 10px 0;
+      font-weight: 300;
+    }
+
+  }
+
+  &__collapse {
+    & i {
+      cursor: pointer;
+      font-size: $font-size-xl;
+    }
+  }
+
+  &__accordion {
+    &.visible {
+      display: grid;
+    }
+    &.unseen {
+      display: none;
+    }
+  }
+}

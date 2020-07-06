@@ -1,0 +1,202 @@
+.SchoolMin {
+  // height: 100vh;
+  &__header {
+    padding: 50px 100px;
+  }
+
+  &__body {
+    padding-left: 100px;
+    &--levels {
+      &.column-3 {
+        grid-template-columns: 0.2fr 0.1fr 1fr;
+      }
+      &.column-3 {
+        grid-template-columns: 0.2fr 1fr 0.1fr;
+      }
+      &.column-4 {
+        grid-template-columns: 0.2fr 0.1fr 1fr 0.1fr;
+      }
+    }
+    &--teachers {
+      &.column-3 {
+        grid-template-columns: 0.2fr 0.1fr 1fr;
+      }
+      &.column-3 {
+        grid-template-columns: 0.2fr 1fr 0.1fr;
+      }
+      &.column-4 {
+        grid-template-columns: 0.2fr 0.1fr 1fr 0.1fr;
+      }
+    }
+
+    &--divider {
+      padding: 100px 0;
+      padding-right: 50px;
+      & .divider {
+        border-radius: $border-radius-sm;
+        width: 100%;
+        height: 2px;
+        background: rgba($gray-400, 0.5);
+        box-shadow: 0px 0px 5px 0px $gray-400;
+      }
+    }
+  }
+
+  &__footer {
+    grid-template-columns: 0.4fr 1fr;
+    padding-bottom: 100px;
+    grid-template-areas:
+      "title title"
+      "info contact";
+
+    &--title {
+      grid-area: title;
+      padding: 50px 700px;
+      & p {
+        padding-top: 10px;
+        font-weight: 100;
+      }
+    }
+    &--info {
+      grid-area: info;
+      margin: 25px 0;
+      padding: 50px;
+      text-align: center;
+      row-gap: 20px;
+      border-radius: $border-radius-xl;
+    }
+    &--contact {
+      grid-area: contact;
+      padding: 25px 50px;
+      padding-left: 0;
+    }
+
+    & button {
+      width: 100%;
+      margin-top: 25px;
+      // background: $secondary-color;
+    }
+  }
+}
+
+.levels--items {
+  grid-template-columns: repeat(4, 1fr 0.5fr);
+}
+
+.teachers--items {
+  column-gap: 50px;
+}
+
+
+.LevelCard3 {
+  grid-template-rows: 1fr 0.1fr;
+  border-radius: $border-radius-xl;
+  box-shadow: $box-shadow-sm;
+  width: 280px;
+  height: 350px;
+
+  &__header {
+    border-radius: $border-radius-xl;
+    & h3 {
+      font-family: $font-family-base;
+      font-size: $font-size-xxl;
+      text-align: center;
+    }
+    &.approved {
+      background: $secondary-color;
+    }
+    &.failed {
+      background: $danger-color;
+    }
+    &.in-progress {
+      background: $tertiary-color;
+    }
+    &.lock {
+      background: $gray-500;
+    }
+  }
+
+  &__body {
+    padding:  10px 25px;
+    border-bottom-left-radius: $border-radius-xl;
+    border-bottom-right-radius: $border-radius-xl;
+    background: $white;
+    z-index: 3;
+
+    &--title {
+      padding-bottom: 10px;
+    }
+
+    &--actions {
+      column-gap: 20px;
+      padding-top: 20px;
+    }
+
+    & button.btn-left, a.btn-left {
+      width: 90%;
+      &.approved {
+        background: $secondary-color;
+      }
+      &.failed {
+        background: $danger-color;
+      }
+      &.in-progress {
+        background: $tertiary-color;
+      }
+      &.lock {
+        background: $gray-500;
+      }
+    }
+
+    & button.btn-right {
+      background: $white;
+      transition: $transition-base;
+      &.approved {
+        color: $blue;
+      }
+      &.failed {
+        color: $danger-color;
+      }
+      &.in-progress {
+        color: $danger-color;
+      }
+      &.lock {
+        color: $blue;
+      }
+      &:hover {
+        background: rgba($dark, 0.1);
+      }
+
+    }
+  }
+
+  &--spacer {
+    height: 10px;
+    background: $gray-400;
+    box-shadow: 0px 0px 5px 0px $gray-400;
+    &.approved {
+      background: rgba($secondary-color, 0.8);
+      box-shadow: 0px 0px 5px 0px $secondary-color;
+    }
+    &.reprobate {
+      background: rgba($red, 0.5);
+      box-shadow: 0px 0px 5px 0px $red;
+    }
+  }
+
+  &.approved {
+    @include shadow($secondary-color);
+  }
+
+  &.failed {
+    @include shadow($danger-color);
+  }
+
+  &.in-progress {
+    @include shadow($tertiary-color);
+  }
+
+  & button {
+    width: 100%;
+  }
+}

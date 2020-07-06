@@ -5,6 +5,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 require('dotenv').config();
 
 const isDev = (process.env.ENV === 'development');

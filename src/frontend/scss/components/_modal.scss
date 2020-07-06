@@ -1,0 +1,35 @@
+.Modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba($black, 0.8);
+
+  & h1 {
+    font-weight: 500;
+  }
+
+  &__container {
+    grid-template-rows: 0.1fr 2fr;
+    border-radius: $border-radius-xl;
+    background: $white;
+    // width: 600px;
+    // height: 600px;
+  }
+
+  &__body {
+    // padding: 0 80px;
+    // padding-bottom: 50px;
+    & textarea {
+      resize: none;
+    }
+  }
+
+  &__close--button {
+    border-radius: 0;
+    border-top-right-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+  }
+}
+

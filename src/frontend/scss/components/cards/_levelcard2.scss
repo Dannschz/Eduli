@@ -1,0 +1,33 @@
+.LevelCard2 {
+  grid-template-columns: 0.1fr 2fr;
+  border-radius: $border-radius;
+  transition: $transition-base;
+
+  // &:hover {
+  //   background: red;
+  // }
+
+  &__header {
+    // border-radius: $border-radius-xl;
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+    padding: 5px;
+  }
+
+  &__body {
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    padding: 15px 50px;
+    &--title {
+      padding: 10px 0;
+    }
+
+    &--description {
+      padding-bottom: 20px;
+    }
+
+    & a {
+      width: 100%;
+    }
+  }
+}

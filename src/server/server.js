@@ -13,11 +13,11 @@ import cookieParser from 'cookie-parser';
 import boom from '@hapi/boom';
 import passport from 'passport';
 import axios from 'axios';
-import reducer from '../frontend/reducers';
-import Layout from '../frontend/components/Layout';
+import reducer from '../frontend/react/reducers';
+import Layout from '../frontend/react/containers/Layout';
 import serverRoutes from '../frontend/routes/serverRoutes';
 import getManifest from './getManifest';
-import { ENV, PORT, API_URL } from './config/config';
+import { ENV, PORT, API_URL, ADMIN_API_KEYS_TOKEN } from './config/config';
 
 const app = express();
 
@@ -64,7 +64,8 @@ const setResponse = (html, preloadedState, manifest) => {
       </head>
       <body>
         <div id="app">${html}</div>
-        <script type="text/html" id="preloadedState">
+        <div id="modal"></div>
+        <script type="text/javascript" id="preloadedState">
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         </script>
         <script type="text/javascript" src="${mainBuild}"></script>
@@ -74,30 +75,132 @@ const setResponse = (html, preloadedState, manifest) => {
   );
 };
 
+// const getLevel = async (level, publicToken) => {
+//   return Promise.resolve(await axios({
+//     url: `${API_URL}/api/level/${level}`,
+//     headers: { Authorization: `Bearer ${publicToken}` },
+//     method: 'get',
+//   })).then(({ data }) => {
+//     return data.data;
+//   });
+// };
+
+// const getCourse = async (course, publicToken) => {
+//   return Promise.resolve(await axios({
+//     url: `${API_URL}/api/course/${course}`,
+//     headers: { Authorization: `Bearer ${publicToken}` },
+//     method: 'get',
+//   })).then(({ data }) => {
+//     return data.data;
+//   });;
+// };
+
+// const getTopic = async (topic, publicToken) => {
+//   return Promise.resolve(await axios({
+//     url: `${API_URL}/api/topic/${topic}`,
+//     headers: { Authorization: `Bearer ${publicToken}` },
+//     method: 'get',
+//   })).then(({ data }) => {
+//     return data.data;
+//   });
+// console.log(topic);
+// console.log('fin');
+// };
+
+// const getList = async (list, token, route) => Promise.all(list.map((item) => getData(item, token, route)));
+// // const getLevelCourses = async (level, publicToken) => Promise.all(level.courses.map((course) => getCourse(course, publicToken)));
+// const getCourseTemary = async (course) => Promise.all(course.map((c) => c.temary));
+// const getTemaryTopic = async (topics, publicToken) => Promise.all(topics.map((topic) => getTopic(topic, publicToken)));
+// const getTemaryTopics = async (topics, publicToken) => Promise.all(topics.map((topic) => getTemaryTopic(topic, publicToken)));
+
+const getData = async (id, route, token) => {
+  const url = id ? `${API_URL}/api/${route}/${id}` : `${API_URL}/api/${route}`;
+  const data = await axios({
+    url,
+    headers: { Authorization: `Bearer ${token}` },
+    method: 'get',
+  }).then(({ data }) => {
+    return data.data;
+  });
+  return data;
+};
+
+// const getListData = async (id, token, route) => {
+//   return Promise.resolve(await axios({
+//     url: `${API_URL}/api/${route}/${id}`,
+//     headers: { Authorization: `Bearer ${token}` },
+//     method: 'get',
+//   })).then(({ data }) => {
+//     return data.data;
+//   });
+// };
+
 const renderApp = async (req, res) => {
   let initialState;
-  const { token, email, name, id } = req.cookies;
+  const { id, token } = req.cookies;
 
-  try {
-    initialState = {
-      user: {
-        id, email, name, token,
-      },
-    };
-  } catch (err) {
-    initialState = {
-      user: {},
-    };
+  if (!token) {
+    try {
+      let publicToken = await axios({
+        url: `${API_URL}/api/auth/sign-in`,
+        method: 'post',
+        auth: { username: 'public@eduli.com', password: 'public-eduli' },
+        data: { apiKeyToken: ADMIN_API_KEYS_TOKEN },
+      });
+      publicToken = publicToken.data.token;
+
+      const institute = await getData('5efe3e629ded7ce2480be025', 'institute', publicToken);
+      institute.levels = await getData(null, 'level', publicToken);
+      institute.courses = await getData(null, 'course', publicToken);
+      institute.topics = await getData(null, 'topic', publicToken);
+
+      initialState = {
+        user: {},
+        institute,
+      };
+    } catch (error) {
+      console.log(error.message);
+      initialState = {
+        user: {},
+        institute: {},
+      };
+    }
+  } else {
+    try {
+      const userData = await getData(id, 'user', token);
+      userData.level = userData.level ? await getData(userData.level, 'level', token) : {};
+      const institute = await getData(userData.institute, 'institute', token);
+      institute.levels = await getData(null, 'level', token);
+      institute.courses = await getData(null, 'course', token);
+      institute.topics = await getData(null, 'topic', token);
+      institute.videos = await getData(null, 'video', token);
+      institute.files = await getData(null, 'file', token);
+      initialState = {
+        user: {
+          ...userData, token,
+        },
+        institute,
+      };
+    } catch (err) {
+      console.log('entra');
+      console.log(err.message);
+      initialState = {
+        user: {},
+        institute: {},
+        student: {},
+      };
+    }
   }
 
   const store = createStore(reducer, initialState);
   const preloadedState = store.getState();
-  const isLogged = (initialState.user.id);
+  const isLogged = (initialState.user ? initialState.user.id : false);
+  const bloke = (initialState.user ? initialState.user.type : false);
   const html = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.url} context={{}}>
         <Layout>
-          {renderRoutes(serverRoutes(isLogged))}
+          {renderRoutes(serverRoutes(isLogged, bloke))}
         </Layout>
       </StaticRouter>
     </Provider>,
@@ -133,18 +236,23 @@ app.post('/auth/sign-up', async (req, res, next) => {
 
   try {
     const userData = await axios({
-      url: `${API_URL}/api/auth/sign-up`,
+      url: `${API_URL}/api/auth/${user.type}/sign-up`,
       method: 'post',
       data: {
-        'email': user.email,
         'name': user.name,
+        'lastname': user.lastname,
+        'nickname': user.nickname,
+        'email': user.email,
         'password': user.password,
+        'institute': user.institute,
       },
     });
     res.status(201).json({
-      name: req.body.name,
-      email: req.body.email,
       id: userData.data.id,
+      name: req.body.name,
+      lastname: req.body.lastname,
+      nickname: req.body.nickname,
+      email: req.body.email,
     });
   } catch (error) {
     next(error);

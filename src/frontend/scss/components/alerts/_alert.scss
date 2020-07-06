@@ -1,0 +1,18 @@
+.alert {
+  @include alert($alert-text-color, $primary-color);
+}
+
+@each $name, $color in $theme-colors {
+  @if (type-of($color) == 'color') {
+    .alert-#{$name} {
+      @include alert($alert-text-color, $color);
+    }
+  }
+}
+
+.alert-white, .alert-light, .alert-soft {
+  color: $dark;
+  & .alert-link {
+    color: $black;
+  }
+}

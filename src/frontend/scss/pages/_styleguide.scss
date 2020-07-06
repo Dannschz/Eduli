@@ -1,0 +1,8 @@
+.StyleGuide {
+  justify-self: center;
+  padding: 50px 500px;
+  // background: $gray-color;
+  & h1 {
+    text-align: center;
+  }
+}

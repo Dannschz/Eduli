@@ -1,0 +1,59 @@
+@mixin accordion($color, $background) {
+  width: 450px;
+  color: $color;
+  background: $background;
+  border-radius: $border-radius;
+  padding: $card-spacer-y $card-spacer-x;
+  // border: 1px solid lighten($gray-color, 70%);
+  &__header {
+    cursor: pointer;
+    font-weight: bold;
+    grid-template-columns: 1fr 0.1fr;
+    &--title {
+      display: flex;
+      align-items: center;
+      & i {
+        padding-right: 10px;
+      }
+    }
+    &--icon {
+      justify-self: right;
+    }
+  }
+  &__body {
+    font-weight: 100;
+    padding-top: $card-spacer-y;
+  }
+  &-group {
+    .accordion {
+      border-radius: 0;
+    }
+    .accordion:first-child {
+      border-top-left-radius: $border-radius;
+      border-top-right-radius: $border-radius;
+    }
+    .accordion:last-child {
+      border-bottom-left-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+    }
+  }
+}
+
+.accordion {
+  @include accordion($black, $white);
+  box-shadow: $box-shadow-sm;
+  border-bottom: 1px solid lighten($gray-color, 70%);
+}
+
+@each $name, $color in $theme-colors {
+  @if (type-of($color) == 'color') {
+    .accordion-#{$name} {
+      @include shadow($color);
+      @include accordion($white, $color);
+    }
+  }
+}
+
+.accordion-white, .accordion-soft, .accordion-light {
+  color: $black;
+}

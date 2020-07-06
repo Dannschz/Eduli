@@ -1,0 +1,113 @@
+.Course {
+
+  & .go-back {
+    position: absolute;
+    top: 60px;
+    left: 80px;
+  }
+
+  &__hero {
+    padding: 50px 250px;
+
+    &--title {
+      padding: 20px 0;
+    }
+
+    &--description {
+      padding-right: 100px;
+      padding-bottom: 30px;
+    }
+
+    &--image {
+      width: 50%;
+      border-radius: $border-radius;
+    }
+
+    & img {
+      border-radius: $border-radius;
+    }
+  }
+
+
+  &__body {
+    padding: 50px 250px;
+    padding-bottom: 0px;
+    column-gap: 50px;
+    grid-template-columns: 1fr 0.6fr;
+    grid-template-areas:
+      "requirements foro"
+      "material foro"
+      "material footer"
+      "action algo";
+
+    &--requirements {
+      grid-area: requirements;
+      padding: 30px 50px;
+      margin-bottom: 50px;
+      border-radius: $border-radius;
+      row-gap: 20px;
+      box-shadow: $box-shadow-sm;
+    }
+
+    &--material {
+      grid-area: material;
+      // row-gap: 5px;
+    }
+
+    &--actions {
+      grid-area: action;
+      padding: 50px 0;
+    }
+
+    &--foro {
+      grid-area: foro;
+      border-radius: $border-radius;
+      // height: 1080px;
+      padding: 0 50px;
+    }
+
+    &--foro button {
+      width: 100%;
+    }
+
+    & .foro__filter {
+      // padding: 0 20px;
+      // column-gap: 20px;
+    }
+
+    & .foro__filter button {
+      // width: 100%;
+      // font-weight: 100;
+      // border: 1px solid lighten($gray-color, 70%);
+    }
+
+    & .foro__filter select {
+      // padding: 8px;
+      // font-weight: 100;
+      // font-size: $font-size-xs;
+      // border: 1px solid lighten($gray-color, 70%);
+    }
+
+    & .foro__messages {
+      padding: 0 10px;
+      // row-gap: 20px;
+    }
+
+    & .foro__messages li {
+      // list-style: none;
+    }
+
+    & .temary-info {
+      grid-template-columns: 1fr 0.2fr 0.2fr;
+    }
+
+    & .temary-info h3 {
+      // font-weight: 500;
+    }
+  }
+
+  &__footer--teacher {
+    grid-area: footer;
+    padding: 50px 0;
+  }
+}

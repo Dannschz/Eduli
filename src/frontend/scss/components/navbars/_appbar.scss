@@ -1,0 +1,75 @@
+.appbar {
+  grid-template-columns: 1fr 1fr 1fr;
+  box-shadow: $box-shadow;
+  // font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  box-shadow: $box-shadow;
+  z-index: 99;
+
+  &__logo {
+    width: 100%;
+    height: 30px;
+    padding: 20px 0;
+    &--image {
+      object-fit: contain;
+    }
+  }
+
+  &__navigation {
+    grid-gap: 20px;
+  }
+
+  &__user {
+    grid-template-columns: 0.5fr 0.1fr 1fr;
+    
+    &--image {
+      width: 30px;
+      height: 30px;
+      padding: 20px 0;
+      
+    }
+    
+    &--notificatios {
+      border-left: 1px solid $white;
+      grid-template-columns: 0.5fr 1fr;
+      grid-gap: 15px;
+      padding-right: 10px;
+    }
+
+    &--settings {
+      padding-left: 10px;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+.image--avatar {
+  border-radius: $circle-radius;
+}
+
+.settings--menu {
+  padding-left: 10px;
+}
+
+.settings--leave {
+  border-radius: $border-radius;
+  background: $white;
+  color: $dark;
+  position: absolute;
+  display: none;
+  align-items: center;
+  top: 45px;
+  box-shadow: $box-shadow;
+  & i {
+    padding-left: 10px;
+  }
+  &:hover {
+    display: flex;
+  }
+}
+
+.appbar__user--settings {
+  &:hover > .settings--leave {
+    display: flex;
+  }
+}

@@ -1,0 +1,34 @@
+.navigation {
+
+  & .pagination {
+    list-style: none;
+  }
+
+  & .page-item {
+    border-radius: $border-radius;
+    border: 1px solid $gray-700;
+    &.none {
+      border: 1px solid $gray-500;
+    }
+  }
+
+  & .page-link {
+    font-size: $font-size-lg;
+    color: $primary-color;
+    width: 100%;
+    border: 1px solid $gray-400;
+    background: $white;
+    border-radius: 0;
+    padding: 10px;
+
+    &.active {
+      background: $secondary-color;
+      color: $white;
+    }
+
+    &:disabled {
+      color: $gray-500;
+      border: 1px solid $gray-300;
+    }
+  }
+}
