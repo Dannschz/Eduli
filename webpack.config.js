@@ -18,7 +18,7 @@ if (isDev) {
 
 module.exports = {
   entry,
-  mode: isDev ? 'development' : 'production',
+  mode: process.env.ENV,
   output: {
     path: isDev ? '/' : path.resolve(__dirname, 'src/server/public'),
     filename: isDev ? 'assets/app.js' : 'assets/app-[hash].js',

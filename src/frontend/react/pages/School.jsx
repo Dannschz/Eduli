@@ -168,7 +168,7 @@ const School = (props) => {
 
       <div className='School__hero column-2 v-center'>
         <div className='School__hero--slogan row-gap-sm'>
-          <h1>{'Eucacion en linea'.toUpperCase()}</h1>
+          <h1>{'Educación en linea'.toUpperCase()}</h1>
           <p>
             {institute.description || 'Deseas conocer la mejor manera de aprender en linea?'}
           </p>
