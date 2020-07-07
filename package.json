@@ -1,6 +1,6 @@
 {
   "name": "eduli",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Sistema de educación en linea",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/strcoder/Eduli.git"
+  },
+  "engines": {
+    "node": "12.16.x"
   },
   "keywords": [],
   "author": "@strcoder",
