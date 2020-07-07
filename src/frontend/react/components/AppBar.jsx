@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // import classNames from 'classnames';
 import { logoutRequest } from '../actions';
-import Logo from '../../assets/images/logo3.png';
-import Avatar from '../../assets/images/card3.jpg';
+import Logo from '../../assets/images/logo.png';
+import Avatar from '../../assets/images/not-found1.png';
 
 const AppBar = (props) => {
   const { user, isLogged, bloke } = props;

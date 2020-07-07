@@ -8,13 +8,10 @@ import ProfileCard7 from '../components/cards/ProfileCard7';
 import LevelCard2 from '../components/cards/LevelCard2';
 import Newsletter from '../components/cards/Newsletter';
 // Images
-import Logo from '../../assets/images/logo2.png';
+import Logo from '../../assets/images/logo.png';
 import Study1 from '../../assets/images/study1.png';
 import Study3 from '../../assets/images/study3.png';
-import Avatar1 from '../../assets/images/video2.jpg';
-import Avatar2 from '../../assets/images/video3.jpg';
-import Avatar3 from '../../assets/images/video4.jpg';
-import Avatar4 from '../../assets/images/video5.jpg';
+import Avatar from '../../assets/images/draw-teacher.png';
 import Modal from '../components/Modal';
 import Login from './Login';
 import Signin from './Signin';
@@ -22,55 +19,55 @@ import Signin from './Signin';
 const teachers = [
   {
     id: 1,
-    avatar: Avatar1,
+    avatar: Avatar,
     name: 'Bonnie M. Green',
     title: 'Web Developer',
   },
   {
     id: 2,
-    avatar: Avatar2,
+    avatar: Avatar,
     name: 'Bonnie M. Green',
     title: 'Web Developer',
   },
   {
     id: 3,
-    avatar: Avatar3,
+    avatar: Avatar,
     name: 'Bonnie M. Green',
     title: 'Web Developer',
   },
   {
     id: 4,
-    avatar: Avatar4,
+    avatar: Avatar,
     name: 'Bonnie M. Green',
     title: 'Web Developer',
   },
   {
     id: 5,
-    avatar: Avatar2,
+    avatar: Avatar,
     name: 'Bonnie M. Green',
     title: 'Web Developer',
   },
   {
     id: 6,
-    avatar: Avatar4,
+    avatar: Avatar,
     name: 'Bonnie M. Green',
     title: 'Web Developer',
   },
   {
     id: 7,
-    avatar: Avatar1,
+    avatar: Avatar,
     name: 'Bonnie M. Green',
     title: 'Web Developer',
   },
   {
     id: 8,
-    avatar: Avatar3,
+    avatar: Avatar,
     name: 'Bonnie M. Green',
     title: 'Web Developer',
   },
   {
     id: 9,
-    avatar: Avatar2,
+    avatar: Avatar,
     name: 'Bonnie M. Green',
     title: 'Web Developer',
   },

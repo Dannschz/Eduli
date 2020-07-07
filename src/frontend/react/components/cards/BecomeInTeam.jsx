@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Image from '../../../assets/images/logo2.png';
+import Image from '../../../assets/images/logo.png';
 
 export default function BecomeInTeam(props) {
   return (

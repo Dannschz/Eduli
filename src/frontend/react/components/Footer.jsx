@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import GetInTouch from './cards/GetInTouch';
 import Newsletter from './cards/Newsletter';
-import Sponsor1 from '../../assets/images/logo3.png';
-import Sponsor2 from '../../assets/images/logo4.png';
+import Sponsor1 from '../../assets/images/logo.png';
 
 export default function Footer(props) {
 
@@ -63,7 +62,7 @@ export default function Footer(props) {
           <span className='v-end'>Patrocinadores oficiales en:</span>
           <div className='column-3'>
             <img src={Sponsor1} alt='' className='image-contain' />
-            <img src={Sponsor2} alt='' className='image-contain' />
+            <img src={Sponsor1} alt='' className='image-contain' />
             <span className='center v-center'>
               Y muchos más
               <i className='fas fa-plus' />
