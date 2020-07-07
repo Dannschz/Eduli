@@ -19,6 +19,10 @@
     &--items {
       column-gap: 20px;
     }
+
+    & select {
+      border: none;
+    }
   }
 
   &__body {

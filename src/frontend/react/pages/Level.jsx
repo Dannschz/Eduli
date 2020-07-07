@@ -97,7 +97,7 @@ const Level = (props) => {
           <button type='button' className={`btn-${level?.color || 'blue'} ${active ? 'btn-sm' : 'btn-xl'}`} onClick={() => setActive(!active)}>
             <i className='fas fa-plus-circle' />
             {' '}
-            Inscribete
+            {user.type === 'manager' ? 'Liberar' : 'Inscribete'}
           </button>
         </div>
       </div>
@@ -174,7 +174,7 @@ const Level = (props) => {
             <button type='button' className={`btn-${level?.color || 'blue'} btn-xl`}>
               <i className='fas fa-plus-circle' />
               {' '}
-              Inscribete
+              {user.type === 'manager' ? 'Liberar' : 'Inscribete'}
             </button>
           </div>
         </div>

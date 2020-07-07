@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import AddMaterial from '../forms/AddMaterial';
 import Modal from '../Modal';
 import Image from '../../../assets/images/draw-video.png';
@@ -30,12 +30,12 @@ export default function BlogCard6(props) {
       <div className='card-body row-gap-sm'>
         <div className='column-2 v-center'>
           <h3 className='card-title'>{title}</h3>
-          <Link to='/' className='text-gray-600 right'>
+          {/* <Link to='/' className='text-gray-600 right'>
             (
             <i className='fas fa-users' />
             {' '}
             40 Alumnos )
-          </Link>
+          </Link> */}
         </div>
         <p className='card-text'>{description}</p>
 
@@ -58,11 +58,13 @@ export default function BlogCard6(props) {
             </button>
           </div>
 
-          <button type='button' className='btn-link text-primary'>
-            <i className='fas fa-share' />
-            {' '}
-            Share
-          </button>
+          {!approved && (
+            <button type='button' className='btn-link text-primary'>
+              <i className='fas fa-share' />
+              {' '}
+              Enviar a revisión
+            </button>
+          )}
 
           {/* <button type='button' className="btn btn-secondary"><i className="far fa-save"></i> Save</button> */}
           <Modal isOpen={open} onClose={() => setOpen(!open)}><AddMaterial course={title} onClose={() => setOpen(!open)} /></Modal>

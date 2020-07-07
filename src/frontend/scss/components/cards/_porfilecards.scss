@@ -109,6 +109,10 @@
   border-bottom-left-radius: $border-radius;
   border-bottom-right-radius: $border-radius;
 
+  &.space-bottom {
+    // padding-bottom: 50px;
+  }
+
   & > .profile-title {
     font-weight: 500;
   }

@@ -137,7 +137,7 @@ const getData = async (id, route, token) => {
 
 const renderApp = async (req, res) => {
   let initialState;
-  const { id, token } = req.cookies;
+  const { id, token, type } = req.cookies;
 
   if (!token) {
     try {
@@ -168,7 +168,9 @@ const renderApp = async (req, res) => {
   } else {
     try {
       const userData = await getData(id, 'user', token);
-      userData.level = userData.level ? await getData(userData.level, 'level', token) : {};
+      if (type === 'student') {
+        userData.level = userData.level ? await getData(userData.level, 'level', token) : {};
+      }
       const institute = await getData(userData.institute, 'institute', token);
       institute.levels = await getData(null, 'level', token);
       institute.courses = await getData(null, 'course', token);

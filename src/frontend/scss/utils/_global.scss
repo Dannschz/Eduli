@@ -22,3 +22,11 @@ body {
     padding-top: 100px;
   }
 }
+
+.AddMaterial {
+  padding: 100px;
+  padding-top: 0;
+  & button {
+    width: 90% !important;
+  }
+}

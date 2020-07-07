@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-export default function AddMaterial(props) {
+const AddMaterial = (props) => {
 
-  const { course, onClose } = props;
+  const { institute, course, onClose } = props;
 
   return (
-    <div className='AddMaterial '>
+    <div className='AddMaterial'>
       { course ? <h1>{course}</h1> : <h1>Agregar Material</h1> }
       <form method='post' className='form-group'>
         <label htmlFor='materialLink'>File</label>
@@ -18,11 +20,14 @@ export default function AddMaterial(props) {
         { !course && (
           <select className='form-select' id='exampleFormControlSelect1'>
             <option>Sin asignar</option>
-            <option>Materia 2</option>
+            {institute.levels.map((level) => (
+              <option key={level._id}>{level.name}</option>
+            ))}
+            {/* <option>Materia 2</option>
             <option>Materia 3</option>
             <option>Materia 4</option>
             <option>Materia 5</option>
-            <option>Materia 5</option>
+            <option>Materia 5</option> */}
           </select>
         ) }
         { course && (
@@ -30,11 +35,24 @@ export default function AddMaterial(props) {
             <option>{course}</option>
           </select>
         )}
-        <div className='form-button column--2'>
+        <div className='form-button column-2'>
           <button type='button' className='btn btn-secondary' onClick={onClose}>Crear</button>
           <button type='button' className='btn btn-danger' onClick={onClose}>Cancelar</button>
         </div>
       </form>
     </div>
   );
-}
+};
+
+const mapStateToProps = (state) => {
+  return {
+    institute: state.institute,
+    user: state.user,
+  };
+};
+
+AddMaterial.propTypes = {
+  institute: PropTypes.object,
+};
+
+export default connect(mapStateToProps, null)(AddMaterial);

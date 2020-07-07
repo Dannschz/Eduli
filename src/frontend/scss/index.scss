@@ -19,6 +19,7 @@
 @import './pages/teacherhome';
 @import './pages/managerhome';
 @import './pages/course';
+@import './pages/createteacher';
 
 @import './components/accordions/accordion';
 @import './components/accordions/materialaccordion';
@@ -28,6 +29,7 @@
 @import './components/breadcrumb';
 @import './components/button';
 @import './components/cards/blogcards';
+@import './components/cards/levelcard';
 @import './components/cards/levelcard2';
 @import './components/cards/porfilecards';
 @import './components/cards/newsletter';
@@ -43,3 +45,4 @@
 @import './components/schoolmin';
 @import './components/player/videoplayer';
 @import './components/player/videocard';
+@import './components/tables/table';
