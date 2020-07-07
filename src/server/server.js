@@ -38,7 +38,7 @@ if (ENV === 'development') {
   app.use(webpackHotMiddleware(compiler));
 } else {
   app.use((req, res, next) => {
-    if (!req.hashManifest) req.hashManifest = getManifest();
+    req.hashManifest = getManifest();
     next();
   });
   app.use(helmet());
@@ -58,7 +58,7 @@ const setResponse = (html, preloadedState, manifest) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8" />
-        <link type="text/css" rel="stylesheet" href="${mainStyles}" />
+        <link rel="stylesheet" type="text/css" href="${mainStyles}" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"/>
         <title>Eduli</title>
       </head>
@@ -261,6 +261,7 @@ app.post('/auth/sign-up', async (req, res, next) => {
   }
 });
 
+app.use(express.static(`${__dirname}/public`));
 app.get('*', renderApp);
 
 app.listen(PORT, (err) => {
