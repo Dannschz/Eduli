@@ -14,7 +14,7 @@
     "url": "git+https://github.com/strcoder/Eduli.git"
   },
   "engines": {
-    "node": "12.16.x"
+    "node": "12.14.x"
   },
   "keywords": [],
   "author": "@strcoder",
