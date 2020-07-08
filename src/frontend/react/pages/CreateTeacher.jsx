@@ -7,10 +7,8 @@ export default function CreateTeacher(props) {
   const password = useRef({});
   password.current = watch('password', '');
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
   };
-
-  // const [visible, setvisible] = useState(false);
 
   return (
     <div className='CreateTeacher border-thin column-2'>
@@ -247,10 +245,6 @@ export default function CreateTeacher(props) {
             <button type='button' className='btn-acent'>
               Generar
             </button>
-            {/* <i
-              className="fa fa-eye password-icon"
-              onClick={() => setvisible(!visible)}
-            ></i> */}
             <small>
               Minimo 8 caracteres, una mayuscula y un numero
               {' '}

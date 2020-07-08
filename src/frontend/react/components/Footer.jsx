@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import GetInTouch from './cards/GetInTouch';
 import Newsletter from './cards/Newsletter';
 import Sponsor1 from '../../assets/images/logo.png';
 
@@ -53,10 +52,6 @@ export default function Footer(props) {
         <section className='Footer__newsletter'>
           <Newsletter />
         </section>
-
-        {/* <section className="Footer__contact">
-          <GetInTouch></GetInTouch>
-        </section> */}
 
         <section className='Footer__sponsor'>
           <span className='v-end'>Patrocinadores oficiales en:</span>

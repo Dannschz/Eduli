@@ -37,11 +37,6 @@ const serverRoutes = (isLogged, bloke) => {
       exact: true,
       component: isLogged && bloke === 'manager' ? HomeManager : isLogged && bloke !== 'manager' ? NotFound : !isLogged ? LoginManger : NotFound,
     },
-    // {
-    //   path: '/manager',
-    //   exact: true,
-    //   component: HomeManager,
-    // },
     {
       path: '/login/manager',
       exact: true,
@@ -67,11 +62,6 @@ const serverRoutes = (isLogged, bloke) => {
       exact: true,
       component: !isLogged && bloke === 'teacher' ? CreateTeacher : NotFound,
     },
-    // {
-    //   path: '/create/teacher',
-    //   exact: true,
-    //   component: CreateTeacher,
-    // },
     {
       name: 'NotFound',
       component: NotFound,

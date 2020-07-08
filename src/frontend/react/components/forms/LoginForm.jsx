@@ -16,7 +16,6 @@ const SigninForm = (props) => {
   const [visible, setVisible] = useState(false);
   const [error, setError] = useState(false);
 
-  // 'use strict';
   const onSubmit = (data) => {
     props.loginUser(data, `/${user}`, setError);
   };
@@ -42,12 +41,6 @@ const SigninForm = (props) => {
           <i className='far fa-user' />
         </span>
         <input
-          // id='StudentUserName'
-          // className={`form-control ${errors?.email ? 'error' : ''}`}
-          // placeholder='Nombre de usuario'
-          // type='text'
-          // value={emailValue}
-          // onChange={(event) => setEmailValue(event.target.value)}
           onFocus={() => setEmailFocus(true)}
           onBlur={() => setEmailFocus(false)}
           placeholder='Digite correo electronico'
@@ -83,19 +76,12 @@ const SigninForm = (props) => {
           <i className='fas fa-unlock-alt' />
         </span>
         <input
-          // id='StudentPassword'
-          // className={`form-control ${errors?.password ? 'error' : ''}`}
-          // placeholder='Nombre de usuario'
-          // type='password'
-          // value={passwordValue}
-          // onChange={(event) => setPasswordValue(event.target.value)}
           onFocus={() => setPasswordFocus(true)}
           onBlur={() => setPasswordFocus(false)}
           name='password'
           className='form-control'
           placeholder='Ingresa tu contraseña'
           type={visible ? 'text' : 'password'}
-          // pattern='(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*'
           ref={register({
             required: 'Contraseña requerida',
           })}

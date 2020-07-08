@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// import classNames from 'classnames';
 import { logoutRequest } from '../actions';
 import Logo from '../../assets/images/logo.png';
 import Avatar from '../../assets/images/not-found1.png';
@@ -31,9 +30,6 @@ const AppBar = (props) => {
           />
         </div>
         <nav className='appbar__navigation column-2 right v-center'>
-          {/* <Link to="/" className="appbar__navigation--item btn-link-white">
-            Inicio
-          </Link> */}
           <div />
           {bloke && (
             <Link to={`/${bloke}`} className='appbar__navigation--item btn-link-white'>
@@ -103,8 +99,6 @@ const mapDispatchToProps = {
 
 AppBar.propTypes = {
   user: PropTypes.object,
-  // isLogin: PropTypes.bool,
-  // isRegister: PropTypes.bool,
   logoutRequest: PropTypes.func,
 };
 

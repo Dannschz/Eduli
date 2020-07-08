@@ -1,48 +1,5 @@
 .HomeTeacher {
-  // grid-template-columns: 0.2fr 1fr;
-  // grid-template-rows: 0.1fr 0.1fr 1fr 1fr;
-  // grid-template-areas:
-  //   "search actions"
-  //   "search filter2"
-  //   "search courses"
-  //   "algo courses";
-
-  // &__filter {
-  //   grid-area: search;
-  //   margin: 40px 20px;
-  //   padding: 0 20px;
-  //   border-radius: $border-radius;
-  //   &--searcher {
-  //     grid-template-areas:
-  //       "label label"
-  //       "input button";
-  //   }
-
-  //   &--searcher label {
-  //     grid-area: label;
-  //   }
-
-  //   &--searcher input {
-  //     // padding: 10px;
-  //     // height: 100%;
-  //     padding: 12px;
-  //     grid-area: input;
-  //     border: 1px solid lighten($gray-color, 50%);
-  //     border-top-left-radius: $border-radius;
-  //     border-bottom-left-radius: $border-radius;
-  //   }
-
-  //   &--searcher button {
-  //     grid-area: button;
-  //     border-radius: 0;
-  //     border-top-right-radius: $border-radius;
-  //     border-bottom-right-radius: $border-radius;
-  //   }
-  // }
-
   &__filter {
-    // padding: 30px 100px;
-    // padding-left: 120px;
     padding: 0 72px 50px 100px;
     &--form {
       grid-template-columns: 0.1fr 1fr 0.5fr;
@@ -74,8 +31,6 @@
 
   &__header {
     grid-template-columns: 1fr 0.2fr 0.2fr;
-    // grid-area: actions;
-    // margin: 40px 50px;
     padding: 40px;
     padding-left: 110px;
     padding-right: 0;
@@ -87,23 +42,6 @@
       }
     }
   }
-
-  // &__filter2 {
-  //   grid-area: filter2;
-  //   margin: 0 50px;
-  //   grid-gap: 10px;
-  //   & button {
-  //     width: 100%;
-  //     font-weight: 100;
-  //     border: 1px solid lighten($gray-color, 70%);
-  //   }
-  //   & select {
-  //     padding: 8px;
-  //     font-weight: 100;
-  //     font-size: $font-size-xs;
-  //     border: 1px solid lighten($gray-color, 70%);
-  //   }
-  // }
 
   &__courses {
     row-gap: 50px;

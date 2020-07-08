@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-// import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import { getData } from '../actions';
 import ProfileCard1 from '../components/cards/ProfileCard1';
 import Teacher from '../../assets/images/draw-teacher.png';
 
@@ -33,47 +31,11 @@ const Level = (props) => {
   const { level } = user;
   const [active, setActive] = useState(false);
   const hasUser = Object.keys(user).length !== 0;
-  // const [loading, setLoading] = useState(true);
-
-  // console.log(institute.courses);
-  // const getCourse = (id) => null;
-
-  // return (
-  //   <div>
-  //     <h1>{`Hola ${hasUser}`}</h1>
-  //     <h1>{`institute ${Array.isArray(institute)}`}</h1>
-  //     <h1>{`level ${level}`}</h1>
-  //   </div>
-  // );
-
-  // const getCourse = (id) => {
-  //   let obj;
-  //   // eslint-disable-next-line array-callback-return
-  //   institute.courses.map((courses) => courses.map((cor) => {
-  //     if (cor._id === id) {
-  //       obj = cor;
-  //     }
-  //   }));
-  //   return obj?.name;
-  // };
 
   const getCourse = (id) => {
     const [course] = institute.courses.filter((course) => course._id === id);
     return course.name;
   };
-
-  // useEffect(() => {
-  //   console.log(level);
-  //   if (level) {
-  //     setLoading(false);
-  //   }
-  // }, [level]);
-
-  // if (loading) {
-  //   return (
-  //     <h1>Loading...</h1>
-  //   );
-  // }
 
   return (
     <div className='Level'>
@@ -193,10 +155,6 @@ const Level = (props) => {
   );
 };
 
-// const mapDispatchToProps = {
-//   getData,
-// };
-
 const mapStateToProps = (state) => {
   return {
     user: state.user,
@@ -210,4 +168,3 @@ Level.propTypes = {
 };
 
 export default connect(mapStateToProps, null)(Level);
-// export default Level;

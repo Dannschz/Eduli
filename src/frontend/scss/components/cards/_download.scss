@@ -1,12 +1,9 @@
 .download {
   padding: 50px;
-  // padding-top: 10px;
   border-radius: $border-radius-xl;
   &-header {
-    // padding-top: 50px;
   }
   &-body {
-    // padding: 50px;
     padding-bottom: 50px;
     font-size: $font-size-lg;
   }
@@ -31,7 +28,6 @@
     }
     & p {
       font-weight: 700;
-      // font-size: $font-size-sm;
     }
   }
 }

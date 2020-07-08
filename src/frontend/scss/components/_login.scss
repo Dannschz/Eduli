@@ -1,13 +1,8 @@
 .LoginCard {
-  // margin: 100px;
   padding: 50px 100px;
   padding-top: 0;
   border-bottom-left-radius: $border-radius-xl;
   border-bottom-right-radius: $border-radius-xl;
-  // @include shadow($acent-color);
-  // &.signin {
-  //   @include shadow($tertiary-color);
-  // }
 
   &__header {
     text-align: center;

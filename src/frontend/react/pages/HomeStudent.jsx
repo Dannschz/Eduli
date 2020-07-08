@@ -13,12 +13,12 @@ const HomeStudent = (props) => {
   const { institute, user } = props;
 
   const getCourses = (id) => {
-    const [course] = institute.courses?.filter((course) => course._id === id);
+    const [course] = institute?.courses?.filter((course) => course._id === id);
     return course;
   };
 
   const courses = user.level?.courses?.map((course) => getCourses(course));
-  const activities = Object.keys(user.level).length !== 0 ? institute.videos : null;
+  const activities = Object.keys(user.level)?.length !== 0 ? institute?.videos : null;
 
   const [active, setActive] = useState(1);
   const [courseActive, setCourseActive] = useState(1);
@@ -48,8 +48,6 @@ const HomeStudent = (props) => {
           <div className='left'>
             <h1>{tab}</h1>
           </div>
-          {/* <button className="btn btn-secondary center">Boton</button>
-          <button className="btn btn-secondary center">Boton</button> */}
           {Object.keys(user.level).length !== 0 && (
             <div className='right'>
               <form className='HomeTeacher__filter--form'>
@@ -161,7 +159,6 @@ const HomeStudent = (props) => {
           )}
         </div>
       )}
-      {/* <Modal isOpen={open} onClose={() => setOpen(!open)}>{<AddMaterial onClose={() => setOpen(!open)}/>}</Modal> */}
     </section>
   );
 };

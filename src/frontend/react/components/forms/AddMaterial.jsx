@@ -23,11 +23,6 @@ const AddMaterial = (props) => {
             {institute.levels.map((level) => (
               <option key={level._id}>{level.name}</option>
             ))}
-            {/* <option>Materia 2</option>
-            <option>Materia 3</option>
-            <option>Materia 4</option>
-            <option>Materia 5</option>
-            <option>Materia 5</option> */}
           </select>
         ) }
         { course && (

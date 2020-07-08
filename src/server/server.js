@@ -75,44 +75,6 @@ const setResponse = (html, preloadedState, manifest) => {
   );
 };
 
-// const getLevel = async (level, publicToken) => {
-//   return Promise.resolve(await axios({
-//     url: `${API_URL}/api/level/${level}`,
-//     headers: { Authorization: `Bearer ${publicToken}` },
-//     method: 'get',
-//   })).then(({ data }) => {
-//     return data.data;
-//   });
-// };
-
-// const getCourse = async (course, publicToken) => {
-//   return Promise.resolve(await axios({
-//     url: `${API_URL}/api/course/${course}`,
-//     headers: { Authorization: `Bearer ${publicToken}` },
-//     method: 'get',
-//   })).then(({ data }) => {
-//     return data.data;
-//   });;
-// };
-
-// const getTopic = async (topic, publicToken) => {
-//   return Promise.resolve(await axios({
-//     url: `${API_URL}/api/topic/${topic}`,
-//     headers: { Authorization: `Bearer ${publicToken}` },
-//     method: 'get',
-//   })).then(({ data }) => {
-//     return data.data;
-//   });
-// console.log(topic);
-// console.log('fin');
-// };
-
-// const getList = async (list, token, route) => Promise.all(list.map((item) => getData(item, token, route)));
-// // const getLevelCourses = async (level, publicToken) => Promise.all(level.courses.map((course) => getCourse(course, publicToken)));
-// const getCourseTemary = async (course) => Promise.all(course.map((c) => c.temary));
-// const getTemaryTopic = async (topics, publicToken) => Promise.all(topics.map((topic) => getTopic(topic, publicToken)));
-// const getTemaryTopics = async (topics, publicToken) => Promise.all(topics.map((topic) => getTemaryTopic(topic, publicToken)));
-
 const getData = async (id, route, token) => {
   const url = id ? `${API_URL}/api/${route}/${id}` : `${API_URL}/api/${route}`;
   const data = await axios({
@@ -124,16 +86,6 @@ const getData = async (id, route, token) => {
   });
   return data;
 };
-
-// const getListData = async (id, token, route) => {
-//   return Promise.resolve(await axios({
-//     url: `${API_URL}/api/${route}/${id}`,
-//     headers: { Authorization: `Bearer ${token}` },
-//     method: 'get',
-//   })).then(({ data }) => {
-//     return data.data;
-//   });
-// };
 
 const renderApp = async (req, res) => {
   let initialState;
@@ -159,7 +111,7 @@ const renderApp = async (req, res) => {
         institute,
       };
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
       initialState = {
         user: {},
         institute: {},
@@ -184,12 +136,10 @@ const renderApp = async (req, res) => {
         institute,
       };
     } catch (err) {
-      console.log('entra');
-      console.log(err.message);
+      // console.log(err.message);
       initialState = {
         user: {},
         institute: {},
-        student: {},
       };
     }
   }

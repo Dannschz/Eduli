@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-// import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ProfileCard5 from '../components/cards/ProfileCard5';
-// import BecomeInTeam from '../components/cards/BecomeInTeam';
 import MaterialAccordion from '../components/accordions/MaterialAccordion';
 import QuestionAccordion from '../components/accordions/QuestionAccordion';
 import Image from '../../assets/images/not-found1.png';
@@ -20,31 +18,8 @@ const Course = (props) => {
     const [topic] = institute.topics.filter((topic) => topic._id === id);
     return topic;
   };
-
-  // const getCourse = (id) => {
-  //   let obj;
-  //   // eslint-disable-next-line array-callback-return
-  //   institute.courses.map((courses) => courses.map((cor) => {
-  //     if (cor._id === id) {
-  //       obj = cor;
-  //     }
-  //   }));
-  //   return obj;
-  // };
-
-  // const course = getCourse(str);
-
-  // console.log(hasUser);
-  // console.log(course);
-
-  // const { title, description, image, requirements, videos, archives } = props;
-  // const [searchFocus, setSearchFocus] = useState(false);
   const [messageFocus, setMessageFocus] = useState(false);
   const [error, setError] = useState(false);
-
-  // return (
-  //   <h1>Course</h1>
-  // );
 
   return (
     <section className='Course'>
@@ -156,34 +131,6 @@ const Course = (props) => {
               />
             </React.Fragment>
           ))}
-          {/* <MaterialAccordion
-            title='Multiplicacion'
-            videos={2}
-            archives={2}
-            videoName='sumas'
-            fileName='sumas'
-          />
-          <MaterialAccordion
-            title='Division'
-            videos={2}
-            archives={2}
-            videoName='sumas'
-            fileName='sumas'
-          />
-          <MaterialAccordion
-            title='Numeros naturales'
-            videos={2}
-            archives={2}
-            videoName='sumas'
-            fileName='sumas'
-          />
-          <MaterialAccordion
-            title='Geometria'
-            videos={2}
-            archives={2}
-            videoName='sumas'
-            fileName='sumas'
-          /> */}
         </div>
         <div className='Course__body--actions'>
           <button type='button' className='btn btn-secondary'>
@@ -194,10 +141,6 @@ const Course = (props) => {
           <p>Profesor del curso:</p>
           <ProfileCard5 avatar={course?.teacher?.avatar || Avatar} name={course?.teacher?.name || 'Profesor'} />
         </div>
-        {/* <div className='Course__footer--institution'>
-          <p>Institucion a la que pertenece el curso:</p>
-          <BecomeInTeam />
-        </div> */}
       </div>
     </section>
   );
@@ -216,4 +159,3 @@ Course.propTypes = {
 };
 
 export default connect(mapStateToProps, null)(Course);
-// export default Course;

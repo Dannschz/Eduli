@@ -1,7 +1,6 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Layout from '../react/containers/Layout';
-// import HomePage from '../react/pages/HomePage';
 import NotFound from '../react/pages/NotFound';
 import School from '../react/pages/School';
 import HomeStudent from '../react/pages/HomeStudent';
@@ -22,13 +21,11 @@ const App = ({ isLogged, bloke }) => (
         <Route exact path='/student' component={isLogged && bloke === 'student' ? HomeStudent : NotFound} />
         <Route exact path='/teacher' component={isLogged && bloke === 'teacher' ? HomeTeacher : NotFound} />
         <Route exact path='/manager' component={isLogged && bloke === 'manager' ? HomeManager : isLogged && bloke !== 'manager' ? NotFound : !isLogged ? LoginManager : NotFound} />
-        {/* <Route exact path='/login/manager' component={HomeManager} /> */}
         <Route exact path='/manager' component={HomeManager} />
         <Route exact path='/level/:id' component={Level} />
         <Route exact path='/course/:id' component={Course} />
         <Route exact path='/player/:id' component={!isLogged ? NotFound : VideoPlayer} />
         <Route exact path='/create/teacher' component={isLogged && bloke === 'manager' ? CreateTeacher : NotFound} />
-        {/* <Route exact path='/create/teacher' component={CreateTeacher} /> */}
         <Route component={NotFound} />
       </Switch>
     </Layout>

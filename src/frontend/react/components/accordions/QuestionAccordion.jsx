@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 export default function QuestionAccordion(props) {
 
   const { question, response } = props;
-
   const [collapse, setCollapse] = useState(true);
 
   return (
@@ -27,9 +26,6 @@ export default function QuestionAccordion(props) {
           <span>{response}</span>
         </div>
       </div>
-
-      {/* <div className="QuestionAccordion__footer"></div> */}
-
     </div>
   );
 }

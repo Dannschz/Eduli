@@ -16,8 +16,10 @@ body {
 }
 
 .NotFound {
-  width: 100vw;
-  height: 100vh;
+  &__container {
+    width: 100vw;
+    height: 100vh;
+  }
   & img {
     padding-top: 100px;
   }

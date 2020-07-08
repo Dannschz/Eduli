@@ -5,7 +5,6 @@ const Accordion = (props) => {
   const { icon, title, description, background } = props;
   const [active, setActive] = useState(false);
 
-  // setActive(false);
   return (
     <div className={`accordion accordion-${background}`}>
       <div role='presentation' className='accordion__header' onClick={() => setActive(!active)}>

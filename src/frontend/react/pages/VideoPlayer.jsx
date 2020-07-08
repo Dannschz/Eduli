@@ -11,7 +11,6 @@ const VideoPlayer = (props) => {
   const { institute, location } = props;
   const str = location.pathname.replace(/\/player\//g, '');
   const [video] = institute.videos.filter((video) => video._id === str);
-  // console.log(institute.videos);
   const [error, setError] = useState(video?.url == null);
 
   if (error) {

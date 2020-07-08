@@ -58,33 +58,33 @@ const LevelCard3 = (props) => {
 const teachers = [
   {
     id: 100,
-    name: 'Neil D. Sims',
+    name: 'Armando Cruz',
     course: 'Matematicas',
-    description: 'Neil drives the technical strategy of the platform and brand.',
+    description: 'Ingeniero',
   },
   {
     id: 101,
-    name: 'Neil D. Sims',
-    course: 'Matematicas',
-    description: 'Neil drives the technical strategy of the platform and brand.',
+    name: 'Hector Marquez',
+    course: 'Español',
+    description: 'Licenciado en comunicación',
   },
   {
     id: 102,
-    name: 'Neil D. Sims',
-    course: 'Matematicas',
-    description: 'Neil drives the technical strategy of the platform and brand.',
+    name: 'Luis E. Tenorio',
+    course: 'Ciencias naturales',
+    description: 'Biologo',
   },
   {
     id: 103,
-    name: 'Neil D. Sims',
-    course: 'Matematicas',
-    description: 'Neil drives the technical strategy of the platform and brand.',
+    name: 'Elizabeth Smith',
+    course: 'Ingles',
+    description: 'Licenciada',
   },
   {
     id: 104,
-    name: 'Neil D. Sims',
-    course: 'Matematicas',
-    description: 'Neil drives the technical strategy of the platform and brand.',
+    name: 'Alejandro Taboada',
+    course: 'Tecnologia',
+    description: 'Ingeniero en computación',
   },
 ];
 
@@ -160,27 +160,27 @@ const SchoolMin = (props) => {
           )}
           <ul className='levels--items column-8 v-center'>
             {viewList.map((level) => (
-              <React.Fragment key={level._id}>
-                <li key={level._id}>
+              <React.Fragment key={level?._id}>
+                <li key={level?._id}>
                   <LevelCard3
-                    id={level._id}
-                    name={level.name}
-                    status={level._id === user.level._id ? 'in-progress' : isApproved(level._id) ? 'approved' : isFailed(level._id) ? 'failed' : 'lock'}
-                    locked={level._id === user.level._id}
-                    approved={isApproved(level._id)}
-                    average={isApproved(level._id) ? '9.5' : isFailed(level._id) ? '5.0' : level.average}
+                    id={level?._id}
+                    name={level?.name}
+                    status={level?._id === user?.level?._id ? 'in-progress' : isApproved(level?._id) ? 'approved' : isFailed(level?._id) ? 'failed' : 'lock'}
+                    locked={level?._id === user?.level?._id}
+                    approved={isApproved(level?._id)}
+                    average={isApproved(level?._id) ? '9.5' : isFailed(level?._id) ? '5.0' : level?.average}
                   />
                 </li>
-                <li key={level.id + 2000} className={`LevelCard3--spacer ${level.status} v-center`} />
+                <li key={level?.id + 2000} className={`LevelCard3--spacer ${level?.status} v-center`} />
               </React.Fragment>
             ))}
-            {page + 4 > levels.length && (
+            {page + 4 > levels?.length && (
               <div className='LevelCard3 background-white text-blue text-center'>
                 <h3 className='center v-center'>No hay mas que mostrar</h3>
               </div>
             )}
           </ul>
-          {page + 4 < levels.length && (
+          {page + 4 < levels?.length && (
             <i
               role='presentation'
               className='fas fa-angle-double-right levels--next center v-center'
@@ -198,32 +198,32 @@ const SchoolMin = (props) => {
             <h2>Tus maestros</h2>
           </div>
 
-          {Object.keys(user.level).length === 0 && (
+          {Object.keys(user?.level)?.length === 0 && (
             <h1 className='column-end-2'>Inscribete a un nivel para interactuar con profesores</h1>
           )}
 
-          {teacherPage !== 0 && Object.keys(user.level).length !== 0 && (
+          {teacherPage !== 0 && Object.keys(user?.level)?.length !== 0 && (
             <i
               role='presentation'
               className='fas fa-angle-double-left levels--prev center v-center'
               onClick={() => handlerPrev(teacherPage, setTeacherPage, setTeacherViewList, teachers, 4)}
             />
           )}
-          {Object.keys(user.level).length !== 0 && (
+          {Object.keys(user?.level)?.length !== 0 && (
             <ul className='teachers--items column-4 column-gap-sm v-center'>
-              {viewTeacherList.map((teacher) => (
-                <li key={teacher.id}>
+              {viewTeacherList?.map((teacher) => (
+                <li key={teacher?.id}>
                   <ProfileCard3
                     image={Avatar}
-                    name={teacher.name}
-                    course={teacher.course}
-                    description={teacher.description}
+                    name={teacher?.name}
+                    course={teacher?.course}
+                    description={teacher?.description}
                   />
                 </li>
               ))}
             </ul>
           )}
-          {teacherPage + 4 < levels.length && Object.keys(user.level).length !== 0 && (
+          {teacherPage + 4 < levels?.length && Object.keys(user?.level)?.length !== 0 && (
             <i
               role='presentation'
               className='fas fa-angle-double-right levels--next center v-center'

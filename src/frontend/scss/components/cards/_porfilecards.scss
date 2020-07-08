@@ -34,7 +34,6 @@
 
   &-img-box {
     margin: 30px;
-    // margin-bottom: 0;
     width: 150px;
     height: 150px;
     object-fit: cover;
@@ -98,20 +97,12 @@
     position: relative;
     grid-area: header;
   }
-
-  &-socialmedia li a {
-    // color: $primary-color;
-  }
 }
 
 .profile-body {
   padding: 20px;
   border-bottom-left-radius: $border-radius;
   border-bottom-right-radius: $border-radius;
-
-  &.space-bottom {
-    // padding-bottom: 50px;
-  }
 
   & > .profile-title {
     font-weight: 500;

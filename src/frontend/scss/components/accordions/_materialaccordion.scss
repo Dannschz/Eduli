@@ -2,9 +2,6 @@
   padding: 25px;
   border-radius: $border-radius;
   transition: $transition-base;
-  // &:hover {
-  //   box-shadow: $box-shadow;
-  // }
 
   &__header {
     grid-template-columns: 1fr 1fr;
@@ -24,23 +21,10 @@
     }
   }
 
-  //   &--info {
-  //     grid-template-columns: 1fr 1fr 0.1fr;
-  //   }
-
-  //   & .accordion {
-  //     cursor: pointer;
-  //   }
-  // }
-
   &__body {
     font-size: $font-size-md;
     padding: 25px;
     padding-bottom: 0;
-
-    // &.collapse {
-    //   display: none;
-    // }
   }
 }
 
@@ -51,7 +35,6 @@
   transition: $transition-base;
   &:hover {
     border-radius: $border-radius;
-    // border-left: 1px solid lighten($gray-color, 70%);
     box-shadow: $box-shadow;
   }
 }

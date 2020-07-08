@@ -1,7 +1,6 @@
 .appbar {
   grid-template-columns: 1fr 1fr 1fr;
   box-shadow: $box-shadow;
-  // font-size: $font-size-lg;
   font-weight: $font-weight-bold;
   box-shadow: $box-shadow;
   z-index: 99;
@@ -21,14 +20,11 @@
 
   &__user {
     grid-template-columns: 0.5fr 0.1fr 1fr;
-    
     &--image {
       width: 30px;
       height: 30px;
       padding: 20px 0;
-      
     }
-    
     &--notificatios {
       border-left: 1px solid $white;
       grid-template-columns: 0.5fr 1fr;

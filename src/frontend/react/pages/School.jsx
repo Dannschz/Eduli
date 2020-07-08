@@ -20,74 +20,44 @@ const teachers = [
   {
     id: 1,
     avatar: Avatar,
-    name: 'Bonnie M. Green',
+    name: 'Armando Cruz',
     title: 'Web Developer',
   },
   {
     id: 2,
     avatar: Avatar,
-    name: 'Bonnie M. Green',
-    title: 'Web Developer',
+    name: 'Antonio Guzmán',
+    title: 'Fullstack Developer',
   },
   {
     id: 3,
     avatar: Avatar,
-    name: 'Bonnie M. Green',
-    title: 'Web Developer',
+    name: 'Hector Marquez',
+    title: 'Backend Developer',
   },
   {
     id: 4,
     avatar: Avatar,
-    name: 'Bonnie M. Green',
-    title: 'Web Developer',
-  },
-  {
-    id: 5,
-    avatar: Avatar,
-    name: 'Bonnie M. Green',
-    title: 'Web Developer',
-  },
-  {
-    id: 6,
-    avatar: Avatar,
-    name: 'Bonnie M. Green',
-    title: 'Web Developer',
-  },
-  {
-    id: 7,
-    avatar: Avatar,
-    name: 'Bonnie M. Green',
-    title: 'Web Developer',
-  },
-  {
-    id: 8,
-    avatar: Avatar,
-    name: 'Bonnie M. Green',
-    title: 'Web Developer',
-  },
-  {
-    id: 9,
-    avatar: Avatar,
-    name: 'Bonnie M. Green',
-    title: 'Web Developer',
+    name: 'Luis e. Tenorio',
+    title: 'Secretaria',
   },
 ];
 
 const handlerPrev = (page, setPage, setView, list, size) => {
   const _page =
     page === 0 ?
-      (list.length - list.length) % size :
+      (list?.length - list?.length) % size :
       page - size < 0 ?
         0 :
         page - size;
   setPage(_page);
-  setView(list.slice(_page, _page + size));
+  setView(list?.slice(_page, _page + size));
 };
 
 const handlerNext = (page, setPage, setView, list, size) => {
-  const _page = page + size >= list.length ? 0 : page + size;
+  const _page = page + size >= list?.length ? 0 : page + size;
   setPage(_page);
-  setView(list.slice(_page, _page + size));
+  setView(list?.slice(_page, _page + size));
 };
 
 const Card = (props) => {
@@ -110,7 +80,7 @@ const School = (props) => {
   const [form, setForm] = useState();
   const [teacherPage, setTeachePage] = useState(0);
   const [viewTeacher, setViewTeacher] = useState(
-    teachers.slice(teacherPage, teacherPage + 4),
+    teachers?.slice(teacherPage, teacherPage + 4),
   );
 
   const slogan = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, officia. Maxime doloribus impedit id quae unde blanditiis similique iure ipsam, corporis nihil! Doloremque ipsum hic esse dignissimos, vel eligendi. Accusantium.';
@@ -170,7 +140,7 @@ const School = (props) => {
         <div className='School__hero--slogan row-gap-sm'>
           <h1>{'Educación en linea'.toUpperCase()}</h1>
           <p>
-            {institute.description || 'Deseas conocer la mejor manera de aprender en linea?'}
+            {institute?.description || 'Deseas conocer la mejor manera de aprender en linea?'}
           </p>
           <button type='button' className='btn-blue left' onClick={() => { setForm(<Signin setForm={setForm} />); setOpen(true); }}>
             Inscribete
@@ -302,18 +272,18 @@ const School = (props) => {
           <i
             role='presentation'
             className='fas fa-angle-double-left levels--prev'
-            onClick={() => handlerPrev(page, setPage, setViewList, institute.levels, 6)}
+            onClick={() => handlerPrev(page, setPage, setViewList, institute?.levels, 6)}
           />
           <ul className='School__levels--items column-3 row-2'>
             {viewList?.map((level) => (
-              <li key={level._id}>
+              <li key={level?._id}>
                 <LevelCard2
-                  id={level._id}
-                  name={level.name}
-                  description={level.description || ''}
-                  educoins={level.earnings || 0}
-                  courses={level.courses.length || 0}
-                  color={level.color || 'primary'}
+                  id={level?._id}
+                  name={level?.name}
+                  description={level?.description || ''}
+                  educoins={level?.earnings || 0}
+                  courses={level?.courses?.length || 0}
+                  color={level?.color || 'primary'}
                 />
               </li>
             ))}
@@ -321,7 +291,7 @@ const School = (props) => {
           <i
             role='presentation'
             className='fas fa-angle-double-right levels--next'
-            onClick={() => handlerNext(page, setPage, setViewList, institute.levels, 6)}
+            onClick={() => handlerNext(page, setPage, setViewList, institute?.levels, 6)}
           />
         </div>
       </div>
@@ -344,9 +314,9 @@ const School = (props) => {
             {viewTeacher?.map((teacher) => (
               <li key={teacher.id}>
                 <ProfileCard7
-                  avatar={teacher.avatar}
-                  name={teacher.name}
-                  title={teacher.title}
+                  avatar={teacher?.avatar}
+                  name={teacher?.name}
+                  title={teacher?.title}
                 />
               </li>
             ))}

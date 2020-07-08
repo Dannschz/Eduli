@@ -18,20 +18,6 @@ delete window.__PRELOADED_STATE__;
 
 const app = document.getElementById('app');
 
-// const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
-
-// renderMethod(
-//   <Provider store={store}>
-//     <Router history={history}>
-//       <App
-//         isLogged={(preloadedState ? preloadedState.user.id : false)}
-//         bloke={(preloadedState ? preloadedState.user.type : false)}
-//       />
-//     </Router>
-//   </Provider>,
-//   app,
-// );
-
 ReactDOM.hydrate(
   <Provider store={store}>
     <Router history={history}>

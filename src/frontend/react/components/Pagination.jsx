@@ -30,16 +30,7 @@ const Pagination = (props) => {
     // eslint-disable-next-line radix
     parseInt(length / visibleElements + 1);
 
-  // const [active, setActive] = useState(1);
   const [items, setItems] = useState([1, 2, 3, 4, 5]);
-
-  // console.log('====================================');
-  // console.log(length + " " + visibleElements + " " + pages);
-  // console.log('====================================');
-
-  // setVisible(active - 1);
-  // console.log(setList);
-  // setList(list.slice(active - 1, active - 1 + visibleElements));
 
   return (
     <nav className='navigation center'>

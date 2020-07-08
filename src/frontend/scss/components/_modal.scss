@@ -14,13 +14,9 @@
     grid-template-rows: 0.1fr 2fr;
     border-radius: $border-radius-xl;
     background: $white;
-    // width: 600px;
-    // height: 600px;
   }
 
   &__body {
-    // padding: 0 80px;
-    // padding-bottom: 50px;
     & textarea {
       resize: none;
     }

@@ -7,9 +7,7 @@ export default function ProfileCard2(props) {
   return (
     <div className='profile-card background-white column-2 border-thin'>
       <div className='profile-image'>
-        {/* <Link to='/teacher/12345'> */}
         <img className='image-cover profile-img-box' src={Avatar} alt='' />
-        {/* </Link> */}
       </div>
       <div className='profile-body space-bottom'>
         <h3 className='profile-title v-end'>{name}</h3>

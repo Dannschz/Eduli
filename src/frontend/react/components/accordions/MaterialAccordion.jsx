@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 export default function MaterialAccordion(props) {
 
   const { id, title, videos, archives, videoName, fileName, disable } = props;
-
   const [collapse, setCollapse] = useState(true);
 
   return (
@@ -51,9 +50,6 @@ export default function MaterialAccordion(props) {
           <span className='right text-gray-600'>2 pag</span>
         </div>
       </div>
-
-      {/* <div className="MaterialAccordion__footer"></div> */}
-
     </div>
   );
 }

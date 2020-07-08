@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-// import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import { getData } from '../actions';
 import ProfileCard1 from '../components/cards/ProfileCard1';
 import Teacher from '../../assets/images/draw-teacher.png';
 
@@ -31,50 +29,14 @@ const teachers = [
 const Level = (props) => {
   const { institute, user, location } = props;
   const str = location.pathname.replace(/\/level\//g, '');
-  const [level] = institute.levels.filter((level) => level._id === str);
+  const [level] = institute?.levels?.filter((level) => level._id === str);
   const [active, setActive] = useState(false);
-  const hasUser = Object.keys(user).length !== 0;
-  // const [loading, setLoading] = useState(true);
-
-  // console.log(institute.courses);
-  // const getCourse = (id) => null;
-
-  // return (
-  //   <div>
-  //     <h1>{`Hola ${hasUser}`}</h1>
-  //     <h1>{`institute ${Array.isArray(institute)}`}</h1>
-  //     <h1>{`level ${level}`}</h1>
-  //   </div>
-  // );
-
-  // const getCourse = (id) => {
-  //   let obj;
-  //   // eslint-disable-next-line array-callback-return
-  //   institute.courses.map((courses) => courses.map((cor) => {
-  //     if (cor._id === id) {
-  //       obj = cor;
-  //     }
-  //   }));
-  //   return obj?.name;
-  // };
+  const hasUser = Object.keys(user)?.length !== 0;
 
   const getCourse = (id) => {
-    const [course] = institute.courses.filter((course) => course._id === id);
-    return course.name;
+    const [course] = institute?.courses?.filter((course) => course._id === id);
+    return course?.name;
   };
-
-  // useEffect(() => {
-  //   console.log(level);
-  //   if (level) {
-  //     setLoading(false);
-  //   }
-  // }, [level]);
-
-  // if (loading) {
-  //   return (
-  //     <h1>Loading...</h1>
-  //   );
-  // }
 
   return (
     <div className='Level'>
@@ -174,7 +136,7 @@ const Level = (props) => {
             <button type='button' className={`btn-${level?.color || 'blue'} btn-xl`}>
               <i className='fas fa-plus-circle' />
               {' '}
-              {user.type === 'manager' ? 'Liberar' : 'Inscribete'}
+              {user?.type === 'manager' ? 'Liberar' : 'Inscribete'}
             </button>
           </div>
         </div>
@@ -183,9 +145,9 @@ const Level = (props) => {
       <div className='Level__footer background-gray-500'>
         <h3 className={`Level__footer--title center text-${level?.color || 'blue'}`}>Jefes finales</h3>
         <div className='column-3 column-gap-md'>
-          {teachers.map((teacher) => (
-            <React.Fragment key={teacher.id}>
-              <ProfileCard1 name={teacher.name} details={teacher.title} />
+          {teachers?.map((teacher) => (
+            <React.Fragment key={teacher?.id}>
+              <ProfileCard1 name={teacher?.name} details={teacher?.title} />
             </React.Fragment>
           ))}
         </div>
@@ -193,10 +155,6 @@ const Level = (props) => {
     </div>
   );
 };
-
-// const mapDispatchToProps = {
-//   getData,
-// };
 
 const mapStateToProps = (state) => {
   return {
@@ -211,4 +169,3 @@ Level.propTypes = {
 };
 
 export default connect(mapStateToProps, null)(Level);
-// export default Level;

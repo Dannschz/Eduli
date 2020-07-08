@@ -6,8 +6,6 @@ import ProfileCard2 from '../components/cards/ProfileCard2';
 import TableStudent from '../components/tables/TableStudents';
 import LeftMenu from '../components/menu/LeftMenu';
 import NotFound from './NotFound';
-// import School from './School';
-// import Pagination from '../components/Pagination';
 
 export default function HomeManager() {
 
@@ -77,32 +75,6 @@ export default function HomeManager() {
         item5={{ content: 'profesores', icon: 'fas fa-chalkboard-teacher' }}
         item6={{ content: 'alumnos', icon: 'fas fa-users' }}
       />
-
-      {/* <div className="HomeManager__actions background-secondary row--10">
-        <div></div>
-        <div></div>
-        <div></div>
-        <button
-          className={`btn ${tab === 'levels' ? 'btn-blue' : 'btn-outline'} btn-outline-gray-400`}
-          onClick={() => setTab('levels')}>
-            Niveles{' '}<i className="fas fa-layer-group"></i>
-          </button>
-        <button
-          className={`btn ${tab === 'courses' ? 'btn-blue' : 'btn-outline'} btn-outline-gray-400`}
-          onClick={() => setTab('courses')}>
-            Cursos{' '}<i className="fas fa-chalkboard"></i>
-          </button>
-        <button
-          className={`btn ${tab === 'teachers' ? 'btn-blue' : 'btn-outline'} btn-outline-gray-400`}
-          onClick={() => setTab('teachers')}>
-            Profesores{' '}<i className="fas fa-chalkboard-teacher"></i>
-          </button>
-        <button
-          className={`btn ${tab === 'students' ? 'btn-blue' : 'btn-outline'} btn-outline-gray-400`}
-          onClick={() => setTab('students')}>
-            Alumnos{' '}<i className="fas fa-users"></i>
-          </button>
-      </div> */}
       <div className='HomeManager__body'>
         {tab === 'instituto' && (
           <NotFound />
@@ -137,9 +109,6 @@ export default function HomeManager() {
             <TableStudent />
           </div>
         )}
-      </div>
-      <div className='HomeManager__footer'>
-        {/* <Pagination></Pagination> */}
       </div>
     </section>
   );

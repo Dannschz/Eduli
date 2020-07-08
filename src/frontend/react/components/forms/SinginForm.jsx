@@ -20,15 +20,6 @@ const SignupForm = (props) => {
   const [visible, setVisible] = useState(false);
   const [error, setError] = useState(false);
 
-  // function handleValidate(user) {
-  //   if (!user) {
-  //     setError(true);
-  //   } else {
-  //     window.location.href = '/login';
-  //   }
-  // }
-
-  // 'use strict';
   const onSubmit = (data) => {
     props.registerUser({ ...data, type: user, institute: '5efe3e629ded7ce2480be025' }, '/', setError);
   };
@@ -53,15 +44,12 @@ const SignupForm = (props) => {
           <i className='far fa-user' />
         </span>
         <input
-          // id='RegisterName'
           className='form-control'
-          // placeholder='Nombre'
           type='text'
           onFocus={() => setNameFocus(true)}
           onBlur={() => setNameFocus(false)}
           placeholder='Digite su nombre '
           name='name'
-          // className='form-control'
           ref={register({
             required: {
               value: true,
@@ -92,9 +80,6 @@ const SignupForm = (props) => {
           <i className='far fa-user' />
         </span>
         <input
-          // id='RegisterUserLastname'
-          // className={`form-control ${errors?.lastname ? 'border-danger' : ''}`}
-          // placeholder='Apellidos'
           type='text'
           onFocus={() => setLastNameFocus(true)}
           onBlur={() => setLastNameFocus(false)}
@@ -131,9 +116,6 @@ const SignupForm = (props) => {
           <i className='far fa-envelope' />
         </span>
         <input
-          // id='RegisterUserEmail'
-          // className={`form-control ${errors?.email ? 'error' : ''}`}
-          // placeholder='Digite su email'
           type='email'
           onFocus={() => setEmailFocus(true)}
           onBlur={() => setEmailFocus(false)}
@@ -170,8 +152,6 @@ const SignupForm = (props) => {
           <i className='far fa-user' />
         </span>
         <input
-          // id='RegisterUserName'
-          // className={`form-control ${errors?.nickname ? 'border-danger' : ''}`}
           placeholder='Digite un nombre de usuario'
           type='text'
           onFocus={() => setUserNameFocus(true)}
@@ -208,27 +188,12 @@ const SignupForm = (props) => {
           <i className='fas fa-unlock-alt' />
         </span>
         <input
-          // id='RegisterPassword'
-          // className={`form-control ${errors?.password ? 'border-danger' : ''}`}
-          // placeholder='Digite su contraseña'
-          // type={`${visible ? 'text' : 'password'}`}
-          // onFocus={() => setPasswordFocus(true)}
-          // onBlur={() => setPasswordFocus(false)}
           onFocus={() => setPasswordFocus(true)}
           onBlur={() => setPasswordFocus(false)}
           name='password'
           className='form-control'
-          // placeholder='Ingresa tu contraseña'
-          // type={visible ? 'text' : 'password'}
-          // pattern='(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*'
-          // ref={register({
-          //   required: 'Contraseña requerida',
-          // })}
-          // name='password'
-          // className='form-control'
           placeholder='Ingresa una contraseña'
           type={visible ? 'text' : 'password'}
-          // pattern='(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ].*'
           ref={register({
             required: 'Contraseña requerida',
             minLength: {
@@ -262,10 +227,7 @@ const SignupForm = (props) => {
           <i className='fas fa-unlock-alt' />
         </span>
         <input
-          // id='RegisterValidatePassword'
-          // className={`form-control ${errors?.passwordRepeat ? 'border-danger' : ''}`}
           placeholder='Validar contraseña'
-          // type='password'
           onFocus={() => setPassword2Focus(true)}
           onBlur={() => setPassword2Focus(false)}
           name='passwordRepeat'
