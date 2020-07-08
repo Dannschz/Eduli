@@ -42,9 +42,11 @@ ESto debera ir dentro del archivo .env
 ###
 
 PORT=3000
+###
 ENV=development
 
 API_URL=https://eduliapi.vercel.app
+###
 ADMIN_API_KEYS_TOKEN=2f90df25038c836a029b881674c9814ff05feb500a82f83cd88d14b77d558d07
 
 ## Scripts diponibles
