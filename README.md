@@ -3,15 +3,19 @@ Sistema de educación en linea
 
 ## Requerimientos
 Node 12.14.0 https://nodejs.org/es/
+####
 Npm 6.14.5
+####
 Git https://git-scm.com/
 
 ## Clonar o descargar repositorio
 ### Clonar con SSH
 En terminal o git bash escribir el siguinte comando:
+###
 git clone git@github.com:strcoder/Eduli.git
 ### Clonar con HTTPS
 En terminal o git bash escribir el siguinte comando:
+###
 git clone https://github.com/strcoder/Eduli.git
 ### Descargar
 Dar click en el boton codigo y descargar el zip
@@ -19,6 +23,7 @@ Dar click en el boton codigo y descargar el zip
 ## Instalar dependencias
 Ya que el repositorio haya clonado o descargado correctamente en terminal debera posicionarse en la carpeta raíz del proyecto
 Ya posicionado correectamente en la raíz del proyecto escribir el siguiente comando
+###
 npm install && npm install -D
 
 ## Variables de entorno 
@@ -33,6 +38,8 @@ Lo que se debera hacer es crear un nuevo archivo llamado .env en el cual debera 
 ### .env
 
 ESto debera ir dentro del archivo .env
+
+###
 
 PORT=3000
 ENV=development
