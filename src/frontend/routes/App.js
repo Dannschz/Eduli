@@ -21,7 +21,6 @@ const App = ({ isLogged, bloke }) => (
         <Route exact path='/student' component={isLogged && bloke === 'student' ? HomeStudent : NotFound} />
         <Route exact path='/teacher' component={isLogged && bloke === 'teacher' ? HomeTeacher : NotFound} />
         <Route exact path='/manager' component={isLogged && bloke === 'manager' ? HomeManager : isLogged && bloke !== 'manager' ? NotFound : !isLogged ? LoginManager : NotFound} />
-        <Route exact path='/manager' component={HomeManager} />
         <Route exact path='/level/:id' component={Level} />
         <Route exact path='/course/:id' component={Course} />
         <Route exact path='/player/:id' component={!isLogged ? NotFound : VideoPlayer} />
