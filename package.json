@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Sistema de educación en linea",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "build": "webpack-cli --config webpack.config.js",
     "start": "node src/server/index.js",
@@ -18,7 +19,7 @@
   },
   "keywords": [],
   "author": "@strcoder",
-  "license": "MIT",
+  "license": "Apache",
   "bugs": {
     "url": "https://github.com/strcoder/Eduli/issues"
   },
@@ -69,7 +70,8 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-dev-server": "^3.11.0",
-    "webpack-hot-middleware": "^2.25.0"
+    "webpack-hot-middleware": "^2.25.0",
+    "cfenv": "1.0.x"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
@@ -85,5 +87,6 @@
     "terser-webpack-plugin": "^3.0.1",
     "transform-runtime": "0.0.0",
     "webpack-manifest-plugin": "^2.2.0"
+		
   }
 }
