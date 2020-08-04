@@ -117,4 +117,4 @@ psd
 thumb
 sketch
 
-src/server/public
+# src/server/public
