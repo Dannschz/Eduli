@@ -13,6 +13,8 @@ import cookieParser from 'cookie-parser';
 import boom from '@hapi/boom';
 import passport from 'passport';
 import axios from 'axios';
+import TextToSpeechV1 from 'ibm-watson/text-to-speech/v1';
+import { IamAuthenticator } from 'ibm-watson/auth';
 import reducer from '../frontend/react/reducers';
 import Layout from '../frontend/react/containers/Layout';
 import serverRoutes from '../frontend/routes/serverRoutes';
@@ -27,6 +29,33 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./utils/auth/strategies/basic');
+
+const textToSpeech = new TextToSpeechV1({
+  version: '2018-04-05',
+  authenticator: new IamAuthenticator({
+    apikey: process.env.TEXT_TO_SPEECH_IAM_APIKEY || 'type-key-here',
+  }),
+  url: process.env.TEXT_TO_SPEECH_URL,
+});
+
+const getFileExtension = (acceptQuery) => {
+  const accept = acceptQuery || '';
+  switch (accept) {
+    case 'audio/ogg;codecs=opus':
+    case 'audio/ogg;codecs=vorbis':
+      return 'ogg';
+    case 'audio/wav':
+      return 'wav';
+    case 'audio/mpeg':
+      return 'mpeg';
+    case 'audio/webm':
+      return 'webm';
+    case 'audio/flac':
+      return 'flac';
+    default:
+      return 'mp3';
+  }
+};
 
 if (ENV === 'development') {
   const webPackConfig = require('../../webpack.config');
@@ -55,6 +84,7 @@ const setResponse = (html, preloadedState, manifest) => {
     <html lang="es">
       <head>
         <meta charset="UTF-8">
+        <script type="text/javascript"> (function(b,c){var e=document.createElement('link');e.rel='stylesheet',e.type='text/css',e.href='https://chatboxlive.blahbox.net/static/css/main.css%27,document.getElementsByTagName(%27head%27)[0].appendChild(e); var f=document.createElement('script');f.onload=function(){var g;if(c)g='previewInit';else{var h=document.createElement('div');g='cbinit',h.id='cbinit',document.body.append(h)} console.log(document.querySelector('#'+g)),chatbox.initChat(document.querySelector('#'+g),b,c)},f.src='https://chatboxlive.blahbox.net/static/js/chat-lib.js%27,document.getElementsByTagName(%27head%27)[0].appendChild(f)%7D) ('44e3e9c4f09c2dc821889867a2781c29', 0); </script>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8" />
@@ -159,6 +189,32 @@ const renderApp = async (req, res) => {
   );
   res.send(setResponse(html, preloadedState, req.hashManifest));
 };
+
+app.get('/api/v3/synthesize', async (req, res, next) => {
+  try {
+    const { result } = await textToSpeech.synthesize(req.query);
+    const transcript = result;
+    transcript.on('response', (response) => {
+      if (req.query.download) {
+        response.headers['content-disposition'] = `attachment; filename=transcript.${getFileExtension(req.query.accept)}`;
+      }
+    });
+    transcript.on('error', next);
+    transcript.pipe(res);
+  } catch (error) {
+    res.send(error);
+  }
+});
+
+// Return the list of voices
+app.get('/api/v2/voices', async (req, res, next) => {
+  try {
+    const { result } = textToSpeech.listVoices();
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
+});
 
 app.post('/auth/sign-in', async (req, res, next) => {
   passport.authenticate('basic', (error, data) => {

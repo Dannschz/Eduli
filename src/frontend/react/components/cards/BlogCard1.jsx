@@ -19,7 +19,7 @@ export default function BlogCard1(props) {
         <div className='column-2 v-center'>
           <Link to={`/player/${id}`} className='btn-primary left'>Continuar</Link>
           <span className='text-danger right'>
-            Actividad
+            <Link to='/activity'>Actividad</Link>
             {' '}
             <i className='fas fa-file-alt' />
           </span>

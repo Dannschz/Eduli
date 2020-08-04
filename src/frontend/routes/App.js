@@ -11,6 +11,7 @@ import VideoPlayer from '../react/pages/VideoPlayer';
 import HomeManager from '../react/pages/HomeManager';
 import CreateTeacher from '../react/pages/CreateTeacher';
 import LoginManager from '../react/pages/LoginManager';
+import Activity from '../react/pages/Activity';
 
 const App = ({ isLogged, bloke }) => (
   <BrowserRouter>
@@ -25,6 +26,7 @@ const App = ({ isLogged, bloke }) => (
         <Route exact path='/course/:id' component={Course} />
         <Route exact path='/player/:id' component={!isLogged ? NotFound : VideoPlayer} />
         <Route exact path='/create/teacher' component={isLogged && bloke === 'manager' ? CreateTeacher : NotFound} />
+        <Route exact path='/activity' component={Activity} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

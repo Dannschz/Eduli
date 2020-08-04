@@ -9,6 +9,7 @@ import VideoPlayer from '../react/pages/VideoPlayer';
 import HomeManager from '../react/pages/HomeManager';
 import CreateTeacher from '../react/pages/CreateTeacher';
 import LoginManger from '../react/pages/LoginManager';
+import Activity from '../react/pages/Activity';
 
 const serverRoutes = (isLogged, bloke) => {
   return [
@@ -61,6 +62,11 @@ const serverRoutes = (isLogged, bloke) => {
       path: '/create/teacher',
       exact: true,
       component: !isLogged && bloke === 'teacher' ? CreateTeacher : NotFound,
+    },
+    {
+      path: '/activity',
+      exact: true,
+      component: Activity,
     },
     {
       name: 'NotFound',
