@@ -5,9 +5,9 @@ import { createBrowserHistory } from 'history';
 import { Provider } from 'react-redux';
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import reducer from './react/reducers';
-import App from './routes/App';
-import './scss/index.scss';
+import reducer from './reducers';
+import App from './routes/App.tsx';
+import './static/scss/index.scss';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const preloadedState = window.__PRELOADED_STATE__;
@@ -21,10 +21,7 @@ const app = document.getElementById('app');
 ReactDOM.hydrate(
   <Provider store={store}>
     <Router history={history}>
-      <App
-        isLogged={(preloadedState ? preloadedState.user._id : false)}
-        bloke={(preloadedState ? preloadedState.user.type : false)}
-      />
+      <App />
     </Router>
   </Provider>,
   app,

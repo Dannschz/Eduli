@@ -13,11 +13,11 @@ import cookieParser from 'cookie-parser';
 import boom from '@hapi/boom';
 import passport from 'passport';
 import axios from 'axios';
-import reducer from '../frontend/react/reducers';
-import Layout from '../frontend/react/containers/Layout';
+import reducer from '../frontend/reducers';
+import Layout from '../frontend/containers/Layout';
 import serverRoutes from '../frontend/routes/serverRoutes';
 import getManifest from './getManifest';
-import { ENV, PORT, API_URL, ADMIN_API_KEYS_TOKEN } from './config/config';
+import { ENV, PORT, API_URL } from './config/config';
 
 const app = express();
 
@@ -35,7 +35,11 @@ if (ENV === 'development') {
   const compiler = webpack(webPackConfig);
   const serverConfig = { port: PORT, hot: true };
   app.use(webpackDevMiddleware(compiler, serverConfig));
-  app.use(webpackHotMiddleware(compiler));
+  app.use(webpackHotMiddleware(compiler, {
+    log: false,
+    path: '/__webpack_hmr',
+    heartbeat: 10 * 1000,
+  }));
 } else {
   app.use((req, res, next) => {
     req.hashManifest = getManifest();
@@ -58,8 +62,9 @@ const setResponse = (html, preloadedState, manifest) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8" />
-        <link rel="stylesheet" type="text/css" href="${mainStyles}" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Mulish:wght@500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"/>
+        <link rel="stylesheet" type="text/css" href="${mainStyles}" />
         <title>Eduli</title>
       </head>
       <body>
@@ -75,84 +80,20 @@ const setResponse = (html, preloadedState, manifest) => {
   );
 };
 
-const getData = async (id, route, token) => {
-  const url = id ? `${API_URL}/api/${route}/${id}` : `${API_URL}/api/${route}`;
-  const data = await axios({
-    url,
-    headers: { Authorization: `Bearer ${token}` },
-    method: 'get',
-  }).then(({ data }) => {
-    return data.data;
-  });
-  return data;
-};
-
 const renderApp = async (req, res) => {
-  let initialState;
-  const { id, token, type } = req.cookies;
 
-  if (!token) {
-    try {
-      let publicToken = await axios({
-        url: `${API_URL}/api/auth/sign-in`,
-        method: 'post',
-        auth: { username: 'public@eduli.com', password: 'public-eduli' },
-        data: { apiKeyToken: ADMIN_API_KEYS_TOKEN },
-      });
-      publicToken = publicToken.data.token;
-
-      const institute = await getData('5efe3e629ded7ce2480be025', 'institute', publicToken);
-      institute.levels = await getData(null, 'level', publicToken);
-      institute.courses = await getData(null, 'course', publicToken);
-      institute.topics = await getData(null, 'topic', publicToken);
-
-      initialState = {
-        user: {},
-        institute,
-      };
-    } catch (error) {
-      // console.log(error.message);
-      initialState = {
-        user: {},
-        institute: {},
-      };
-    }
-  } else {
-    try {
-      const userData = await getData(id, 'user', token);
-      if (type === 'student') {
-        userData.level = userData.level ? await getData(userData.level, 'level', token) : {};
-      }
-      const institute = await getData(userData.institute, 'institute', token);
-      institute.levels = await getData(null, 'level', token);
-      institute.courses = await getData(null, 'course', token);
-      institute.topics = await getData(null, 'topic', token);
-      institute.videos = await getData(null, 'video', token);
-      institute.files = await getData(null, 'file', token);
-      initialState = {
-        user: {
-          ...userData, token,
-        },
-        institute,
-      };
-    } catch (err) {
-      // console.log(err.message);
-      initialState = {
-        user: {},
-        institute: {},
-      };
-    }
-  }
+  const initialState = {
+    user: {},
+    institute: {},
+  };
 
   const store = createStore(reducer, initialState);
   const preloadedState = store.getState();
-  const isLogged = (initialState.user ? initialState.user.id : false);
-  const bloke = (initialState.user ? initialState.user.type : false);
   const html = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.url} context={{}}>
         <Layout>
-          {renderRoutes(serverRoutes(isLogged, bloke))}
+          {renderRoutes(serverRoutes())}
         </Layout>
       </StaticRouter>
     </Provider>,

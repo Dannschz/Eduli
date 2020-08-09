@@ -1,0 +1,38 @@
+@mixin alert($color, $background) {
+  background: $background;
+  color: $color;
+  padding: $alert-padding-y $alert-padding-x;
+  border-radius: $alert-border-radius;
+  @include shadow($background);
+  &-inner {
+    &-icon {
+      padding-right: 10px;
+      font-size: $icon-size-xs;
+    }
+  }
+  & .alert-link {
+    font-weight: 700;
+    color: $alert-link-color;
+  }
+  &.alert-dismissible {
+    grid-template-columns: 1fr 0.1fr;
+    & .close {
+      cursor: pointer;
+      justify-self: flex-end;
+    }
+  }
+  & hr {
+    width: 100%;
+    margin: $alert-padding-y 0;
+    border: 1px solid darken($background, 2%);
+    box-shadow: 0px 0px 4px 0px $background;
+  }
+  & .alert-with-footer {
+    & h5 {
+      margin-top: 20px;
+    }
+    & div {
+      margin-top: 25px;
+    }
+  }
+}

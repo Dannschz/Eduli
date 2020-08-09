@@ -5,6 +5,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const nodeExternals = require('webpack-node-externals');
 
 require('dotenv').config();
 
@@ -24,8 +25,14 @@ module.exports = {
     filename: isDev ? 'assets/app.js' : 'assets/app-[hash].js',
     publicPath: '/',
   },
+  // target: 'node',
+  // node: {
+  //   __dirname: false,
+  //   __filename: false,
+  // },
+  // externals: [nodeExternals()],
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.ts', '.tsx'],
   },
   optimization: {
     minimize: true,
@@ -52,18 +59,29 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(js|ts|tsx)$/,
+        use: 'ts-loader',
+        exclude: '/node_modules/',
+      },
+      {
         enforce: 'pre',
-        test: /\.(js|jsx)$/,
+        test: /\.(js|ts|tsx)$/,
         exclude: /node_modules/,
         loader: 'eslint-loader',
       },
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
-      },
+      // {
+      //   enforce: 'pre',
+      //   test: /\.(js|jsx)$/,
+      //   exclude: /node_modules/,
+      //   loader: 'eslint-loader',
+      // },
+      // {
+      //   test: /\.(js|jsx)$/,
+      //   exclude: /node_modules/,
+      //   use: {
+      //     loader: 'babel-loader',
+      //   },
+      // },
       {
         test: /\.(s*)css$/,
         use: [
@@ -75,16 +93,23 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|gif|jpg)$/,
-        use: [
-          {
-            'loader': 'file-loader',
-            options: {
-              name: 'assets/[hash].[ext]',
-            },
-          },
-        ],
+        test: /\.(png|gif|jp?g)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'assets/[hash].[ext]',
+        },
       },
+      // {
+      //   test: /\.(png|jp(e*)g|gif)$/,
+      //   exclude: /node_modules/,
+      //   use: [{
+      //     loader: 'url-loader',
+      //     options: {
+      //       limit: 10000,
+      //       publicPath: '/',
+      //     },
+      //   }],
+      // },
     ],
   },
   devServer: {

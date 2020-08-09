@@ -1,0 +1,92 @@
+.CreateTeacher {
+  margin: 100px 200px;
+  border-radius: $border-radius-xl;
+  &__info {
+    padding: 50px;
+  }
+
+  &__side {
+    padding: 50px;
+    img {
+      object-fit: contain;
+    }
+  }
+
+  & .form-group {
+    column-gap: 50px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "title title"
+      "name lastname"
+      "birthdate birthdate"
+      "subtitle subtitle"
+      "id id"
+      "email password"
+      "button button";
+
+    &--title {
+      grid-area: title;
+    }
+
+    &--subtitle {
+      border-top: 1px solid $gray-500;
+      grid-area: subtitle;
+      margin-top: 25px;
+      padding-top: 15px;
+    }
+
+    &--name {
+      grid-area: name;
+    }
+
+    &--lastname {
+      grid-area: lastname;
+    }
+
+    &--birthdate {
+      grid-area: birthdate;
+    }
+
+    &--id {
+      grid-area: id;
+    }
+
+    &--email {
+      grid-area: email;
+    }
+
+    &--pasword {
+      grid-area: password;
+    }
+
+    &--button {
+      margin-top: 20px;
+      grid-area: button;
+      width: 100%;
+    }
+  }
+
+  & .birthdate--group {
+    grid-template-columns: 0.1fr repeat(3, 1fr);
+
+    &-icon {
+      border-top-left-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+    }
+
+    & i {
+      padding: 10px;
+    }
+
+    & input {
+      width: 90%;
+      border-radius: 0;
+      border-left: none;
+    }
+
+    &-year input {
+      border-top-right-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+    }
+  }
+}

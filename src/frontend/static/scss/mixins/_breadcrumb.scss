@@ -1,0 +1,26 @@
+@mixin breadcrums($color, $background) {
+  margin: 0;
+  display: flex;
+  color: $color;
+  font-weight: 100;
+  justify-items: center;
+  background: $background;
+  border-radius: $border-radius;
+  grid-template-columns: repeat(12, 1fr 0.1fr);
+  padding: $navbar-padding-y $navbar-padding-x;
+  @include shadow($background);
+  & li {
+    padding: 0 5px;
+    &:nth-child(2n) {
+      font-weight: 600;
+    }
+  }
+  & a {
+    color: $white;
+    font-weight: 600;
+    transition: $transition-base;
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}

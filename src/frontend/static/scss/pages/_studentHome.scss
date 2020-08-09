@@ -1,0 +1,36 @@
+.HomeStudent {
+
+  & ul, li {
+    padding: 0;
+    list-style: none;
+  }
+
+  &__header {
+    padding: 50px 60px 50px 100px;
+    & h1 {
+      text-transform: capitalize;
+    }
+  }
+
+  &__videos {
+    padding-left: 100px;
+    padding-right: 80px;
+    & ul {
+      row-gap: 50px;
+      padding-bottom: 35px;
+    }
+  }
+
+  &__courses {
+    padding-left: 120px;
+    padding-right: 80px;
+    & ul {
+      row-gap: 50px;
+      padding-bottom: 35px;
+    }
+  }
+
+  & .btn {
+    box-shadow: $box-shadow-sm;
+  }
+}

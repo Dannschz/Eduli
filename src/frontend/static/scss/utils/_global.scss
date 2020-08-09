@@ -1,0 +1,28 @@
+@import './variables';
+@import './../mixins/button';
+
+body {
+  margin: 0;
+  font-family: $font-family-base;
+}
+
+a {
+  text-decoration: none;
+  color: $tertiary-color;
+}
+
+.btn, .btn-primary, .btn-secondary, .btn-tertiary {
+  @include button($soft-color, $primary-color);
+}
+
+.btn-secondary {
+  background: $primary-color;
+}
+
+.btn-tertiary {
+  background: $tertiary-color;
+}
+
+.btn-link {
+  @include buttonLink($gray-600);
+}

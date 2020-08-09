@@ -1,0 +1,38 @@
+@import './../utils/variables';
+@import './../utils/global';
+@import './../utils//image';
+@import './../utils/text';
+
+.HomePage {
+  width: 100vw;
+  height: 100vh;
+  grid-template-areas: "contain";
+  background: #1C1C24;
+  // background: #101222;
+  // background: $soft-color;
+  &__body {
+    grid-area: contain;
+    row-gap: 50px;
+    & .btn-tertiary {
+      align-self: flex-start;
+    }
+  }
+  &__background {
+    width: 100vw;
+    height: 100vh;
+    grid-area: contain;
+  }
+  & > .btn-tertiary {
+    align-self: flex-start;
+    margin-top: 25px;
+  }
+}
+
+@media screen and (max-width: map-get($breakpoints-width , 'md')) and (orientation: landscape) {
+  .HomePage__body {
+    padding-top: 35px;
+    row-gap: 15px;
+  }
+}
+
+// @import './../components/navs/topNav';
