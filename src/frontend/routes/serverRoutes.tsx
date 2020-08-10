@@ -1,5 +1,5 @@
-import NotFound from '../pages/NotFound';
-import HomePage from '../pages/HomePage';
+import NotFound from '../pages/NotFound/NotFound';
+import HomePage from '../pages/HomePage/HomePage';
 
 const serverRoutes = () => {
   return [

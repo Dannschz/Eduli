@@ -1,3 +1,9 @@
 body {
   margin: 0;
+  &.light {
+    background: #d6d9dd;
+  }
+  &.dark {
+    background: #313840;
+  }
 }

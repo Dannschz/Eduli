@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Image = require('../static/assets/images/not-found2.png');
+const Image = require('../../static/assets/images/not-found2.png');
 
 export default function NotFound() {
   return (

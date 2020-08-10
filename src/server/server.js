@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable global-require */
 import express from 'express';
 import helmet from 'helmet';
@@ -7,16 +6,14 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 import cookieParser from 'cookie-parser';
 import boom from '@hapi/boom';
 import passport from 'passport';
 import axios from 'axios';
-import reducer from '../frontend/reducers';
 import Layout from '../frontend/containers/Layout';
 import serverRoutes from '../frontend/routes/serverRoutes';
 import getManifest from './getManifest';
+import { Provider } from '../frontend/Context';
 import { ENV, PORT, API_URL } from './config/config';
 
 const app = express();
@@ -80,17 +77,14 @@ const setResponse = (html, preloadedState, manifest) => {
   );
 };
 
-const renderApp = async (req, res) => {
-
+const renderApp = (req, res) => {
   const initialState = {
+    theme: '',
     user: {},
     institute: {},
   };
-
-  const store = createStore(reducer, initialState);
-  const preloadedState = store.getState();
   const html = renderToString(
-    <Provider store={store}>
+    <Provider initialState={initialState}>
       <StaticRouter location={req.url} context={{}}>
         <Layout>
           {renderRoutes(serverRoutes())}
@@ -98,7 +92,7 @@ const renderApp = async (req, res) => {
       </StaticRouter>
     </Provider>,
   );
-  res.send(setResponse(html, preloadedState, req.hashManifest));
+  res.send(setResponse(html, initialState, req.hashManifest));
 };
 
 app.post('/auth/sign-in', async (req, res, next) => {

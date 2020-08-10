@@ -15,10 +15,25 @@ export const registerRequest = (payload: any) => ({
   payload,
 });
 
+export const setThemeRequest = (payload: any) => ({
+  type: 'SET_THEME',
+  payload,
+});
+
 export const setError = (payload: any) => ({
   type: 'SET_ERROR',
   payload,
 });
+
+type themeProps = {
+  theme: string,
+}
+
+export const setTheme = ({ theme }: themeProps) => {
+  return (dispatch: any) => {
+    dispatch(setThemeRequest(theme));
+  };
+};
 
 export const registerUser = (payload: any, redirectUrl: string, error: Function) => {
   return (dispatch: any) => {
