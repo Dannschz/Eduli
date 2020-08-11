@@ -1,9 +1,16 @@
-const setLocalStorage = (key: string, value: string) => {
-  try {
-    typeof window !== 'undefined' ? window.localStorage.setItem(key, value) : new Error('window undefined');
-  } catch (error) {
-    console.log(error.message);
-  }
+import axios from 'axios';
+
+const setStorage = (key: string, value: string) => {
+  axios({
+    url: `/${key}`,
+    method: 'post',
+    data: {
+      theme: value,
+    },
+  }).then((result) => {
+  }).catch((error) => {
+    console.log(error);
+  });
 };
 
 const reducer = (state: any, action: any) => {
@@ -11,7 +18,7 @@ const reducer = (state: any, action: any) => {
     case 'LOGIN_REQUEST':
     case 'REGISTER_REQUEST':
     case 'SET_THEME':
-      setLocalStorage('theme', action.theme);
+      setStorage('theme', action.theme);
       return {
         ...state,
         theme: action.theme,

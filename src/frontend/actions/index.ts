@@ -30,8 +30,19 @@ type themeProps = {
 }
 
 export const setTheme = ({ theme }: themeProps) => {
+  console.log(theme);
   return (dispatch: any) => {
-    dispatch(setThemeRequest(theme));
+    axios({
+      url: '/theme',
+      method: 'post',
+      data: {
+        theme,
+      },
+    }).then((result) => {
+      dispatch(setThemeRequest(theme));
+    }).catch((error) => {
+      dispatch(setError(error));
+    });
   };
 };
 

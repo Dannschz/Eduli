@@ -6,6 +6,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
+import { LocalStorage } from 'node-localstorage';
 import cookieParser from 'cookie-parser';
 import boom from '@hapi/boom';
 import passport from 'passport';
@@ -17,6 +18,7 @@ import { Provider } from '../frontend/Context';
 import { ENV, PORT, API_URL } from './config/config';
 
 const app = express();
+global.localStorage = new LocalStorage('./scratch');
 
 app.use(express.json());
 app.use(cookieParser());
@@ -64,11 +66,14 @@ const setResponse = (html, preloadedState, manifest) => {
         <link rel="stylesheet" type="text/css" href="${mainStyles}" />
         <title>Eduli</title>
       </head>
-      <body>
+      <body class=${JSON.stringify(preloadedState.theme).replace(/</g, '\\u003c')}>
         <div id="app">${html}</div>
         <div id="modal"></div>
         <script type="text/javascript" id="preloadedState">
-          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+          const preloadState = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')};
+          const body = document.body.classList;
+          body.add(preloadState.theme);
+          window.__PRELOADED_STATE__ = preloadState;
         </script>
         <script type="text/javascript" src="${mainBuild}"></script>
         <script type="text/javascript" src="${vendorBuild}"></script>
@@ -77,9 +82,18 @@ const setResponse = (html, preloadedState, manifest) => {
   );
 };
 
+const getLocalStorage = (key) => {
+  return localStorage.getItem(key);
+};
+
+const setLocalStorage = (key, value) => {
+  localStorage.setItem(key, JSON.parse(JSON.stringify(value)));
+};
+
 const renderApp = (req, res) => {
+  const theme = getLocalStorage('theme') || 'light';
   const initialState = {
-    theme: '',
+    theme,
     user: {},
     institute: {},
   };
@@ -94,6 +108,16 @@ const renderApp = (req, res) => {
   );
   res.send(setResponse(html, initialState, req.hashManifest));
 };
+
+app.post('/theme', (req, res, next) => {
+  const { body: { theme } } = req;
+  try {
+    const set = setLocalStorage('theme', theme);
+    res.status(200).json({ theme: set });
+  } catch (error) {
+    next(error);
+  }
+});
 
 app.post('/auth/sign-in', async (req, res, next) => {
   passport.authenticate('basic', (error, data) => {
