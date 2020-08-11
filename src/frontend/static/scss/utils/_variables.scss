@@ -26,6 +26,8 @@ $dark : #1c2540;
 $black : #111111;
 
 //* Color scheme *//
+$light-background: #f4f7f9;
+$dark-background: #282828;
 $primary-color: #042454;
 $secondary-color: #02132d;
 $tertiary-color: #0056B3;
@@ -172,10 +174,11 @@ $circle-radius: 50%;
 $organic-radius: 63% 37% 30% 70% / 50% 45% 55% 50%;
 
 // * Transitions *//
-$transition-base: all .2s ease;
-$transition-transform: transform .2s ease;
-$transition-fade: opacity .15s linear;
-$transition-collapse: height .35s ease;
+$transition-theme: all 0.5s ease;
+$transition-base: all 0.2s ease;
+$transition-transform: transform 0.2s ease;
+$transition-fade: opacity 0.15s linear;
+$transition-collapse: height 0.35s ease;
 $transition-tabs: all 0.2s;
 
 //* Fonts *//

@@ -1,25 +1,11 @@
-@import './shadow';
-
-@mixin button($color, $background) {
-  font-family: $font-family-base;
-  border: none;
+@mixin button($color: $soft-color, $background: $primary-color) {
   color: $color;
-  padding: 10px 14px;
-  cursor: pointer;
-  text-align: center;
-  align-self: center;
-  justify-self: center;
-  background: $background;
-  font-size: $font-size-base;
-  font-weight: 600;
-  border-radius: $border-radius-lg;
-  text-transform: capitalize;
-  transition: $transition-transform;
+  background-color: $background;
   @include shadow($background);
   @if (type-of($background) == 'color') {
     &:hover {
       transform: translateY(-2px);
-      // background: darken($background, 2%);
+      background: darken($background, 2%);
     }
   }
 }

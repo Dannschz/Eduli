@@ -1,9 +1,15 @@
-@import './variables';
-@import './../mixins/button';
-
 body {
   margin: 0;
   font-family: $font-family-base;
+  transition: $transition-theme;
+  &.light {
+    color: $dark;
+    background: $light-background;
+  }
+  &.dark {
+    color: $soft-color;
+    background: $dark-background;
+  }
 }
 
 a {
@@ -12,17 +18,32 @@ a {
 }
 
 .btn, .btn-primary, .btn-secondary, .btn-tertiary {
-  @include button($soft-color, $primary-color);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 10px 14px;
+  text-align: center;
+  align-self: center;
+  justify-self: center;
+  text-transform: capitalize;
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+  border-radius: $border-radius-lg;
+  transition: $transition-transform;
+}
+
+.btn, .btn-primary {
+  @include button();
 }
 
 .btn-secondary {
-  background: $primary-color;
+  @include button($soft-color, $secondary-color);
 }
 
 .btn-tertiary {
-  background: $tertiary-color;
+  @include button($soft-color, $tertiary-color);
 }
 
-.btn-link {
-  @include buttonLink($gray-600);
-}
+// .btn-link {
+//   @include buttonLink($gray-600);
+// }

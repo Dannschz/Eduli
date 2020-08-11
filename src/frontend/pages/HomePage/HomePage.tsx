@@ -10,8 +10,9 @@ export default function HomePage() {
     <>
       <div className={theme}>
         <h1 className={theme}>{`HomePage ${theme}`}</h1>
+        <p>Texto de ejemplo</p>
       </div>
-      <button type='button' onClick={() => dispatch({ type: 'SET_THEME', theme: newTheme })}>Boton</button>
+      <button type='button' className='btn' onClick={() => dispatch({ type: 'SET_THEME', theme: newTheme })}>Boton</button>
     </>
   );
 }
