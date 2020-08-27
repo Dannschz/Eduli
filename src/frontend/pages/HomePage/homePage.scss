@@ -1,3 +1,6 @@
+@import './../../static/scss/utils/variables';
+@import './../../static/scss/mixins/shadow';
+
 h1 {
   &.light {
     color: #797979;
@@ -6,3 +9,8 @@ h1 {
     color: #0f91ce;
   }
 }
+
+.draw {
+  margin: 100px;
+}
+

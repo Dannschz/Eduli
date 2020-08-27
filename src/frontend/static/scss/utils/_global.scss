@@ -17,7 +17,7 @@ a {
   color: $tertiary-color;
 }
 
-.btn, .btn-primary, .btn-secondary, .btn-tertiary {
+.btn, .btn-primary, .btn-secondary, .btn-tertiary, .btn-link, .btn-acent {
   border: none;
   cursor: pointer;
   font-weight: 600;
@@ -44,6 +44,10 @@ a {
   @include button($soft-color, $tertiary-color);
 }
 
-// .btn-link {
-//   @include buttonLink($gray-600);
-// }
+.btn-acent {
+  @include button($soft-color, $acent-color);
+}
+
+.btn-link {
+  @include buttonLink();
+}

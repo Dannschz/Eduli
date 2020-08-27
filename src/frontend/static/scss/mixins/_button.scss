@@ -21,9 +21,10 @@
   }
 }
 
-@mixin buttonLink($color) {
-  @include button($color, none);
+@mixin buttonLink($color: $primary-color) {
+  color: $color;
   border: none;
+  background: none;
   &:hover {
     transform: translateY(-2px);
   }
