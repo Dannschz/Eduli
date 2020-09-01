@@ -77,9 +77,13 @@
 
 @media (max-width: map-get($breakpoints-width , 'sm')) {
   .AppBar {
+    top: 100vh;
+    position: sticky;
     &__nav {
-      bottom: 0;
-      position: absolute;
+      // bottom: 0;
+      // left: 0;
+      // position: sticky;
+      // top: 0;
       justify-content: space-evenly;
       width: 100%;
       padding: 20px 0;
