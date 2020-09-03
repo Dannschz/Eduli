@@ -1,12 +1,12 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-import Layout from '../containers/Layout';
+import Layout from '../components/Layout/Layout';
 import NotFound from '../pages/NotFound/NotFound';
 import HomePage from '../pages/HomePage/HomePage';
 import { useStateValue } from '../Context';
 
 const App = () => {
-  const [{ theme }] = useStateValue();
+  const { theme } = useStateValue();
   if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     const body = document.body.classList;
     theme === 'light' ? body.remove('dark') : body.add(theme);

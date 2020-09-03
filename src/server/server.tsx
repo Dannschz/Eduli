@@ -6,19 +6,17 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import { LocalStorage } from 'node-localstorage';
 import cookieParser from 'cookie-parser';
 import boom from '@hapi/boom';
 import passport from 'passport';
 import axios from 'axios';
-import Layout from '../frontend/containers/Layout';
+import Layout from '../frontend/components/Layout/Layout';
 import serverRoutes from '../frontend/routes/serverRoutes';
 import getManifest from './getManifest';
 import { Provider } from '../frontend/Context';
 import { ENV, PORT, API_URL } from './config/config';
 
 const app = express();
-global.localStorage = new LocalStorage('./scratch');
 
 app.use(express.json());
 app.use(cookieParser());
@@ -41,7 +39,9 @@ if (ENV === 'development') {
   }));
 } else {
   app.use((req, res, next) => {
-    req.hashManifest = getManifest();
+    req.body = {
+      manifest: getManifest(),
+    };
     next();
   });
   app.use(helmet());
@@ -49,7 +49,11 @@ if (ENV === 'development') {
   app.disable('x-powered-by');
 }
 
-const setResponse = (html, preloadedState, manifest) => {
+type preloadState = {
+  theme: string
+}
+
+const setResponse = (html: string, preloadedState: preloadState, manifest: any) => {
   const mainStyles = manifest ? manifest['main.css'] : '/assets/app.css';
   const mainBuild = manifest ? manifest['main.js'] : '/assets/app.js';
   const vendorBuild = manifest ? manifest['vendors.js'] : 'assets/vendor.js';
@@ -61,19 +65,16 @@ const setResponse = (html, preloadedState, manifest) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8" />
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Mulish:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Mulish:wght@500&display=swap" rel="stylesheet"></link>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"/>
         <link rel="stylesheet" type="text/css" href="${mainStyles}" />
-        <title>Eduli</title>
+        <title>Antonio Guzmán</title>
       </head>
       <body class=${JSON.stringify(preloadedState.theme).replace(/</g, '\\u003c')}>
         <div id="app">${html}</div>
         <div id="modal"></div>
         <script type="text/javascript" id="preloadedState">
-          const preloadState = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')};
-          const body = document.body.classList;
-          body.add(preloadState.theme);
-          window.__PRELOADED_STATE__ = preloadState;
+          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')};
         </script>
         <script type="text/javascript" src="${mainBuild}"></script>
         <script type="text/javascript" src="${vendorBuild}"></script>
@@ -82,18 +83,11 @@ const setResponse = (html, preloadedState, manifest) => {
   );
 };
 
-const getLocalStorage = (key) => {
-  return localStorage.getItem(key);
-};
-
-const setLocalStorage = (key, value) => {
-  localStorage.setItem(key, JSON.parse(JSON.stringify(value)));
-};
-
-const renderApp = (req, res) => {
-  const theme = getLocalStorage('theme') || 'light';
+const renderApp = (req: express.Request, res: express.Response) => {
+  const { theme } = req.cookies;
+  const { manifest } = req.body;
   const initialState = {
-    theme,
+    theme: theme || 'light',
     user: {},
     institute: {},
   };
@@ -106,18 +100,8 @@ const renderApp = (req, res) => {
       </StaticRouter>
     </Provider>,
   );
-  res.send(setResponse(html, initialState, req.hashManifest));
+  res.send(setResponse(html, initialState, manifest));
 };
-
-app.post('/theme', (req, res, next) => {
-  const { body: { theme } } = req;
-  try {
-    const set = setLocalStorage('theme', theme);
-    res.status(200).json({ theme: set });
-  } catch (error) {
-    next(error);
-  }
-});
 
 app.post('/auth/sign-in', async (req, res, next) => {
   passport.authenticate('basic', (error, data) => {
@@ -173,7 +157,6 @@ app.post('/auth/sign-up', async (req, res, next) => {
 app.use(express.static(`${__dirname}/public`));
 app.get('*', renderApp);
 
-app.listen(PORT, (err) => {
-  if (err) console.log(err);
-  else console.log(`${ENV} server running on Port ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`${ENV} server running on Port ${PORT}`);
 });

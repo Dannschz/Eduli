@@ -3,17 +3,15 @@ import ReactDOM from 'react-dom';
 import { Router } from 'react-router';
 import { createBrowserHistory } from 'history';
 import { Provider } from './Context';
-import App from './routes/App.tsx';
+import App from './routes/App';
 import './static/scss/index.scss';
 
-const preloadedState = window.__PRELOADED_STATE__;
 const history = createBrowserHistory();
-
+const preloadedState = window.__PRELOADED_STATE__;
+const app = document.getElementById('app');
 delete window.__PRELOADED_STATE__;
 
-const app = document.getElementById('app');
-
-ReactDOM.hydrate(
+ReactDOM.render(
   <Provider initialState={preloadedState}>
     <Router history={history}>
       <App />

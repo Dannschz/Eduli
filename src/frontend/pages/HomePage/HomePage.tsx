@@ -4,7 +4,7 @@ import { useStateValue } from '../../Context';
 import './homePage.scss';
 
 export default function HomePage() {
-  const [{ theme }] = useStateValue();
+  const { theme } = useStateValue();
   // const [{ theme }, dispatch] = useStateValue();
   // const [toggle, setToggle] = useState(theme);
   // const newTheme = theme === 'light' ? 'dark' : 'light';

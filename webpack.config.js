@@ -10,7 +10,7 @@ require('dotenv').config();
 
 const isDev = (process.env.ENV === 'development');
 
-const entry = ['./src/frontend/index.js'];
+const entry = ['./src/frontend/index.tsx'];
 
 if (isDev) {
   entry.push('webpack-hot-middleware/client?path=__webpack_hrm&timeout=2000&reload=true');
@@ -72,13 +72,6 @@ module.exports = {
         loader: 'eslint-loader',
       },
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
-      },
-      {
         test: /\.(s*)css$/,
         use: [
           {
@@ -93,6 +86,7 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: 'assets/[hash].[ext]',
+          esModule: false,
         },
       },
     ],
