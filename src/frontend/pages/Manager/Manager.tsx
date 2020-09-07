@@ -1,11 +1,10 @@
 import React from 'react';
-import Dashboard from '../../components/Dashboard/Dashboard';
 import './manager.scss';
 
 const Manager = () => {
   return (
     <section className='Manager'>
-      <Dashboard />
+      <h1>Manager</h1>
     </section>
   );
 };
