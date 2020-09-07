@@ -4,6 +4,7 @@ import Layout from '../components/Layout/Layout';
 import NotFound from '../pages/NotFound/NotFound';
 import HomePage from '../pages/HomePage/HomePage';
 import { useStateValue } from '../Context';
+import Admin from '../pages/Manager/Manager';
 
 const App = () => {
   const { theme } = useStateValue();
@@ -17,6 +18,7 @@ const App = () => {
       <Layout>
         <Switch>
           <Route exact path='/' component={HomePage} />
+          <Route exact path='/manager' component={Admin} />
           <Route component={NotFound} />
         </Switch>
       </Layout>

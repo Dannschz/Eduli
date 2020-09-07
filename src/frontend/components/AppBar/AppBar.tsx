@@ -53,9 +53,15 @@ const AppBar = () => {
             </div>
           </div>
         </nav>
-        <button type='button' className={`ToggleSwitch ${theme}`} onClick={() => dispatch({ type: 'SET_THEME', theme: newTheme })}>
-          <span className={`ToggleSwitch--circle ${theme}`} />
-        </button>
+        <div className='AppBar__theme flex'>
+          <button type='button' className='btn-link' onClick={() => dispatch({ type: 'SET_THEME', theme: 'light' })}>
+            Light
+          </button>
+          <span>|</span>
+          <button type='button' className='btn-link' onClick={() => dispatch({ type: 'SET_THEME', theme: 'dark' })}>
+            Dark
+          </button>
+        </div>
       </header>
       <nav className={`AppBar__nav bottom ${theme}`}>
         <Link to='/' className='AppBar__nav--home'>
