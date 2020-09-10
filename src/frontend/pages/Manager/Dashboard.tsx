@@ -1,8 +1,10 @@
 import React from 'react';
 import Toolbar from '../../components/Manager/Toolbar/Toolbar';
 import Sidenav from '../../components/Manager/Sidenav/Sidenav';
-import './manager.scss';
 import Card from '../../components/Manager/Card/Card';
+import Chart from '../../components/Manager/Chart/Chart';
+import './manager.scss';
+import BarChart from '../../components/Manager/Chart/BarChart';
 
 const Dashboard = () => {
   return (
@@ -15,6 +17,8 @@ const Dashboard = () => {
         <Card />
         <Card />
         <Card />
+        <Chart />
+        <BarChart />
       </main>
     </>
   );
