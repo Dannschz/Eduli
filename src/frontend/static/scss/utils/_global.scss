@@ -23,14 +23,16 @@ a {
   color: $tertiary-color;
 }
 
-.btn, .btn-primary, .btn-secondary, .btn-tertiary, .btn-link, .btn-acent {
+.btn, .btn-primary, .btn-secondary, .btn-tertiary, .btn-acent, .btn-link, .btn-link-soft {
   border: none;
   cursor: pointer;
   font-weight: 600;
   padding: 10px 14px;
   text-align: center;
   align-self: center;
+  align-items: center;
   justify-self: center;
+  justify-content: center;
   text-transform: capitalize;
   font-size: $font-size-base;
   font-family: $font-family-base;
@@ -54,6 +56,17 @@ a {
   @include button($soft-color, $acent-color);
 }
 
-.btn-link {
+.btn-link, .btn-link-soft {
   @include buttonLink();
 }
+
+.btn-link-soft {
+  color: $soft-color;
+}
+
+.text-primary { color: $primary-color; }
+.text-secondary { color: $secondary-color; }
+.text-acent { color: $gray-500; }
+.text-success { color: $success-color; }
+.text-danger { color: $danger-color; }
+.text-soft { color: $soft-color; }

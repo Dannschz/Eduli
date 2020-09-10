@@ -1,5 +1,4 @@
 import React from 'react';
-// import AppBar from '../AppBar/AppBar';
 
 type LayoutProps = {
   children: React.ReactElement
@@ -8,7 +7,6 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      {/* <AppBar /> */}
       { children }
     </>
   );

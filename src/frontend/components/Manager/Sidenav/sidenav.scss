@@ -1,0 +1,66 @@
+@import "./../../../static/scss/utils/variables";
+@import "./../../../static/scss/mixins/shadow";
+
+.Sidenav {
+  height: 100vh;
+  width: 50px;
+  position: fixed;
+  color: $soft-color;
+  transition: $transition-theme;
+  justify-items: center;
+  // align-items: center;
+  grid-template-rows: auto 1fr;
+  &.true {
+    width: 180px;
+  }
+  &.dark {
+    background: $secondary-color;
+    @include shadow($secondary-color);
+  }
+  &.light {
+    background: $primary-color;
+    @include shadow($primary-color);
+  }
+  &--active {
+    margin: 25px 0;
+    transition: $transition-theme;
+  }
+  &--active i {
+    font-size: $icon-size-sm;
+  }
+  &__body {
+    grid-template-rows: repeat(6, auto);
+    align-items: center;
+    justify-items: center;
+    & .fas.fa-angle-down {
+      font-size: $icon-size-md;
+    }
+    & a {
+      color: $soft-color;
+      align-items: center;
+      font-size: $font-size-lg;
+    }
+    & a i {
+      padding: 0 10px;
+    }
+    & a p {
+      animation: opacityOn 1s;
+    }
+  }
+  &.true:after {
+    top: 0;
+    left: 0;
+    z-index: -1;
+    content: '';
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background: rgba($dark-background, 0.4);
+  }
+}
+
+@keyframes opacityOn {
+  0% { opacity: 0 }
+  10% { opacity: 0 }
+  100% { opacity: 1; }
+}

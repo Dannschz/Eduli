@@ -1,10 +1,10 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { useStateValue } from '../Context';
 import Layout from '../components/Layout/Layout';
 import NotFound from '../pages/NotFound/NotFound';
 import HomePage from '../pages/HomePage/HomePage';
-import { useStateValue } from '../Context';
-import Admin from '../pages/Manager/Manager';
+import Dashboard from '../pages/Manager/Dashboard';
 
 const App = () => {
   const { theme } = useStateValue();
@@ -18,7 +18,7 @@ const App = () => {
       <Layout>
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route exact path='/manager' component={Admin} />
+          <Route exact path='/manager' component={Dashboard} />
           <Route component={NotFound} />
         </Switch>
       </Layout>
