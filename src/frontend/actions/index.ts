@@ -63,6 +63,7 @@ export const loginUser = ({ user, redirectUrl, dispatch, error }: loginProps) =>
     document.cookie = `name=${data.user.name}`;
     document.cookie = `email=${data.user.email}`;
     document.cookie = `type=${data.user.type}`;
+    document.cookie = `theme=${data.user.theme}`;
     dispatch({ type: 'LOGIN_REQUEST', data });
   }).then(() => {
     error(false);

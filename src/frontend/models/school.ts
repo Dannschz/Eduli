@@ -20,7 +20,16 @@ export interface area extends element {
   levels?: Array<level>,
 }
 
-export interface world extends element {
+export interface World extends element {
+  name: string,
+  address: string,
+  email: string,
+  telephone: number,
+  dateFoundation: Date,
+  slogan: string,
   areas?: Array<area>,
+  levels?: Array<level>,
+  chapters?: Array<chapter>,
+  missions?: Array<mission>,
 }
 
