@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // import Logo from 'assets/images/eduli.png';
+import { setTheme } from '../../../actions/index';
 import { useStateValue } from '../../../Context';
 import './toolbar.scss';
 
@@ -17,7 +18,7 @@ const Toolbar = () => {
         <button
           type='button'
           className='btn-link-soft'
-          onClick={() => dispatch({ type: 'SET_THEME', theme: 'light' })}
+          onClick={() => setTheme({ theme: 'light', dispatch })}
         >
           light
         </button>
@@ -25,7 +26,7 @@ const Toolbar = () => {
         <button
           type='button'
           className='btn-link-soft'
-          onClick={() => dispatch({ type: 'SET_THEME', theme: 'dark' })}
+          onClick={() => setTheme({ theme: 'dark', dispatch })}
         >
           dark
         </button>
