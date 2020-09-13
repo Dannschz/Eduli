@@ -76,7 +76,7 @@ const setResponse = (html: string, preloadedState: preloadState, manifest: any) 
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')};
         </script>
         <script type="text/javascript" src="${mainBuild}"></script>
-        <script type="text/javascript" src="${vendorBuild}"></script>
+        <script type="text/javascript" src="/${vendorBuild}"></script>
       </body>
     </html>`
   );
@@ -101,6 +101,26 @@ const renderApp = (req: express.Request, res: express.Response) => {
   );
   res.send(setResponse(html, initialState, manifest));
 };
+
+app.post('/theme', async (req, res, next) => {
+  // const { body: theme, body: user } = req;
+  const { theme } = req.body;
+
+  try {
+    // const setTheme = await axios({
+    //   url: `${API_URL}/${user.id}/theme`,
+    //   method: 'post',
+    //   data: {
+    //     'theme': theme,
+    //   },
+    // });
+    res.status(200).json({
+      theme,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
 
 app.post('/auth/sign-in', async (req, res, next) => {
   passport.authenticate('basic', (error, data) => {

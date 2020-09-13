@@ -1,4 +1,31 @@
+@import './../../static/scss/utils/variables';
+@import './../../static/scss/mixins/shadow';
+
 .Content {
   padding: 100px 25px 0 80px;
   gap: 25px;
+}
+
+.Settings {
+  padding: 100px 25px 0 70px;
+  &__header {
+    display: flex;
+    justify-content: center;
+  }
+  &__header .btn-outline:first-child, &__header .btn:first-child{
+    // width: 100px;
+    // margin: 0 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  &__header .btn-outline:last-child, &__header .btn:last-child {
+    // width: 100px;
+    // margin: 0 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  &__header > .btn-outline.dark {
+    color: $soft-color;
+    @include shadowSm($black);
+  }
 }

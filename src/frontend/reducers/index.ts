@@ -1,13 +1,19 @@
 import axios from 'axios';
 
-const setStorage = (key: string, value: string) => {
+type themeProps = {
+  theme: string,
+}
+
+const setTheme = ({ theme }: themeProps) => {
   axios({
-    url: `/${key}`,
+    url: '/theme',
     method: 'post',
     data: {
-      theme: value,
+      theme,
     },
-  }).then((result) => {
+  }).then(({ data }) => {
+    const { theme } = data;
+    document.cookie = `theme=${theme}`;
   }).catch((error) => {
     console.log(error);
   });
@@ -18,7 +24,7 @@ const reducer = (state: any, action: any) => {
     case 'LOGIN_REQUEST':
     case 'REGISTER_REQUEST':
     case 'SET_THEME':
-      setStorage('theme', action.theme);
+      setTheme(action);
       return {
         ...state,
         theme: action.theme,

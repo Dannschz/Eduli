@@ -23,7 +23,7 @@ a {
   color: $tertiary-color;
 }
 
-.btn, .btn-primary, .btn-secondary, .btn-tertiary, .btn-acent, .btn-link, .btn-link-soft {
+.btn, .btn-primary, .btn-secondary, .btn-tertiary, .btn-acent, .btn-outline, .btn-outline-soft, .btn-link, .btn-link-soft {
   border: none;
   cursor: pointer;
   font-weight: 600;
@@ -60,6 +60,14 @@ a {
   @include buttonLink();
 }
 
+.btn-outline {
+  @include buttonOutline($primary-color, $soft-color)
+}
+
+.btn-outline-soft {
+  @include buttonOutline($soft-color, $primary-color)
+}
+
 .btn-link-soft {
   color: $soft-color;
 }
@@ -70,3 +78,16 @@ a {
 .text-success { color: $success-color; }
 .text-danger { color: $danger-color; }
 .text-soft { color: $soft-color; }
+.text-gray-600 { color: $gray-600; }
+.text-gray-500 { color: $gray-500; }
+.text-gray-400 { color: $gray-400; }
+
+.form {
+  @include formBasic();
+}
+
+body.dark {
+  .form {
+    @include formBasicDark();
+  }
+}

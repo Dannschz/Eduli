@@ -1,6 +1,7 @@
 import NotFound from '../pages/NotFound/NotFound';
 import HomePage from '../pages/HomePage/HomePage';
-import Admin from '../pages/Manager/Manager';
+import Dashboard from '../pages/Manager/Dashboard';
+import Settings from '../pages/Manager/Settings';
 
 const serverRoutes = () => {
   return [
@@ -12,7 +13,12 @@ const serverRoutes = () => {
     {
       path: '/manager',
       exact: true,
-      component: Admin,
+      component: Dashboard,
+    },
+    {
+      path: '/manager/settings',
+      exact: true,
+      component: Settings,
     },
     {
       name: 'NotFound',

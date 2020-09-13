@@ -5,6 +5,7 @@ import Layout from '../components/Layout/Layout';
 import NotFound from '../pages/NotFound/NotFound';
 import HomePage from '../pages/HomePage/HomePage';
 import Dashboard from '../pages/Manager/Dashboard';
+import Settings from '../pages/Manager/Settings';
 
 const App = () => {
   const { theme } = useStateValue();
@@ -19,6 +20,7 @@ const App = () => {
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route exact path='/manager' component={Dashboard} />
+          <Route exact path='/manager/settings' component={Settings} />
           <Route component={NotFound} />
         </Switch>
       </Layout>

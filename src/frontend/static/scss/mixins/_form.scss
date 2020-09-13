@@ -1,0 +1,47 @@
+@mixin inputBasic {
+  width: 100%;
+  border: none;
+  padding: 10px;
+  box-shadow: $box-shadow-sm;
+  border-radius: $border-radius;
+  font-family: $font-family-base;
+  // border: 1px solid lighten($gray-color, 60%);
+}
+
+@mixin formBasic {
+  &-control {
+    padding: 20px 0;
+    gap: 20px;
+  }
+  &-description {
+    padding-bottom: 5px;
+    font-size: $font-size-md;
+  }
+  &-input, &-textarea {
+    @include inputBasic();
+  }
+  &-message {
+    font-weight: 100;
+    font-size: $font-size-sm;
+  }
+  &-button {
+    width: 100%;
+  }
+  &-textarea.no-resize {
+    resize: none;
+  }
+  &-input[type='date'] {
+    background: $white;
+    -webkit-appearance: none;
+  }
+}
+
+@mixin formBasicDark {
+  &-input, &-textarea, &-input[type='date'] {
+    color: $soft-color;
+    background: $gray-color;
+  }
+  &-input::placeholder, &-textarea::placeholder, &-input[type='date']::placeholder {
+    color: $gray-300;
+  }
+}

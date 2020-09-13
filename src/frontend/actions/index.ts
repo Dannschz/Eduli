@@ -38,7 +38,8 @@ export const setTheme = ({ theme }: themeProps) => {
       data: {
         theme,
       },
-    }).then((result) => {
+    }).then(({ data }) => {
+      document.cookie = `theme=${data.theme}`;
       dispatch(setThemeRequest(theme));
     }).catch((error) => {
       dispatch(setError(error));
