@@ -1,0 +1,126 @@
+@import './../../static/scss/utils/variables';
+
+.Hero {
+  padding: 100px 0;
+  // background: $white;
+  border-radius: $border-radius-xl;
+  box-shadow: $box-shadow-sm;
+  transition: $transition-theme;
+  &.light {
+    background: $white;
+  }
+  &.dark {
+    background: $black;
+  }
+  &__image {
+    max-width: 500px;
+    padding: 50px;
+    justify-self: center;
+  }
+  &__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  &__actions {
+    gap: 25px;
+    padding: 0 25px;
+    text-align: center;
+  }
+  &__actions > .btn, &__actions > .btn-outline {
+    width: 60%;
+  }
+  &__actions > .btn-outline.dark {
+    color: $soft-color;
+    box-shadow: $box-shadow;
+  }
+}
+
+@media (min-width: 768px) {
+  .Hero {
+    &__actions {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0 100px;
+    }
+    &__actions h2 {
+      grid-column-end: span 2;
+    }
+    &__actions h6 {
+      grid-column-end: span 2;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .Hero {
+    grid-template-columns: 1fr 0.6fr;
+    padding: 100px 200px;
+    align-items: center;
+    &__actions {
+      padding: 0;
+      text-align: left;
+    }
+    &__actions > .btn, &__actions > .btn-outline {
+      width: 100%;
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .Hero {
+    grid-template-columns: 1fr 0.5fr;
+    padding: 100px;
+    padding-right: 400px;
+  }
+}
+
+.FilterCard {
+  margin: 0 25px;
+  padding: 15px;
+  min-width: 250px;
+  position: relative;
+  bottom: 50px;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+  transition: $transition-theme;
+  &.light {
+    background: $white;
+  }
+  &.dark {
+    background: $black;
+  }
+  & > .form-control {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  & > .form-control > label small {
+    justify-content: center;
+  }
+  & > .form-control > .btn{
+    margin-top: 15px;
+  }
+}
+
+@media (min-width: 512px) {
+  .FilterCard {
+    & > .form-control > .btn{
+      width: auto;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .FilterCard {
+    width: 1000px;
+    justify-self: center;
+    padding: 25px 250px;
+    & > .form-control > .btn{
+      margin-top: 15px;
+      width: 150px;
+    }
+    & > .form-control > label small {
+      justify-content: left;
+    }
+  }
+}

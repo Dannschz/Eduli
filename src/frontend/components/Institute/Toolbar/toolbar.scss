@@ -1,0 +1,7 @@
+.Toolbar {
+  &__actions.no-disappear {
+    & .divider, & button {
+      display: flex;
+    }
+  }
+}

@@ -13,7 +13,7 @@
     "url": "git+https://github.com/strcoder/Eduli.git"
   },
   "engines": {
-    "node": "12.14.0"
+    "node": "14.6.0"
   },
   "keywords": [
     "typescript",

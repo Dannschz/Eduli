@@ -82,7 +82,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|gif|jp?g)$/,
+        test: /\.(png|svg|gif|jp?g)$/,
         loader: 'file-loader',
         options: {
           name: 'assets/[hash].[ext]',

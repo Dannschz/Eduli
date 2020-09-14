@@ -1,0 +1,45 @@
+@import './../../../static/scss/utils/variables';
+
+.BottomNavigationBar {
+  bottom: 0;
+  width: 100vw;
+  height: 65px;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  box-shadow: $box-shadow;
+  justify-content: space-evenly;
+  &.light {
+    background: rgba($white, 0.5);
+    & .btn-link.active {
+      color: $tertiary-color;
+    }
+  }
+  &.dark {
+    background: rgba($black, 0.2);
+    & .btn-link.active {
+      color: $soft-color;
+    }
+  }
+  &.light .btn-link {
+    color: rgba($primary-color, 0.5);
+  }
+  &.dark .btn-link {
+    color: rgba($soft-color, 0.5);
+  }
+  & .btn-link {
+    text-align: center;
+    flex-direction: column;
+    font-size: $font-size-xs;
+    transform: scale(0.8);
+  }
+  & .btn-link i {
+    padding-bottom: 5px;
+    font-size: $icon-size-xs;
+  }
+  & .btn-link.active {
+    // color: $tertiary-color;
+    transform: scale(1);
+    animation: bounceIn 0.5s;
+  }
+}

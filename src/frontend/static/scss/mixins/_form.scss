@@ -17,7 +17,7 @@
     padding-bottom: 5px;
     font-size: $font-size-md;
   }
-  &-input, &-textarea {
+  &-input, &-textarea, &-select {
     @include inputBasic();
   }
   &-message {
@@ -34,6 +34,13 @@
     background: $white;
     -webkit-appearance: none;
   }
+  &-select {
+    background: $white;
+    -webkit-appearance: none;
+  }
+  &-select.background-none {
+    background: none;
+  }
 }
 
 @mixin formBasicDark {
@@ -43,5 +50,11 @@
   }
   &-input::placeholder, &-textarea::placeholder, &-input[type='date']::placeholder {
     color: $gray-300;
+  }
+  &-select.background-none {
+    color: $soft-color;
+  }
+  &-select:active {
+    background: $dark;
   }
 }
