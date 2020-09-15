@@ -8,10 +8,10 @@
   border-radius: $border-radius;
   transition: $transition-theme;
   &.light {
-    background: $soft-color;
+    background: $white;
   }
   &.dark {
-    background: $dark-color;
+    background: $black;
   }
   &__header {
     display: flex;

@@ -8,9 +8,15 @@
   transition: $transition-theme;
   &.light {
     background: $white;
+    & h6 {
+      color: rgba($gray-color, 0.4);
+    }
   }
   &.dark {
     background: $black;
+    & h6 {
+      color: rgba($soft-color, 0.6);
+    }
   }
   &__image {
     max-width: 500px;
@@ -122,5 +128,91 @@
     & > .form-control > label small {
       justify-content: left;
     }
+  }
+}
+
+.InformationCards {
+  padding: 25px;
+  gap: 25px;
+}
+
+@media (min-width: 768px) {
+  .InformationCards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.Schedules {
+  padding: 50px 25px;
+  gap: 25px;
+  &__header {
+    gap: 10px;
+  }
+  &__body, &__body--first {
+    gap: 25px;
+  }
+  &__body {
+    overflow: auto;
+    white-space: nowrap;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  &__body--last {
+    width: 85vw;
+    max-width: 350px;
+    align-content: center;
+    white-space: pre-wrap;
+  }
+  & .btn-link, .btn-link-soft {
+    padding: 15px 0;
+    justify-self: left;
+  }
+}
+
+.Card2 {
+  gap: 25px;
+  width: 80vw;
+  padding: 15px;
+  max-width: 350px;
+  color: $soft-color;
+  white-space: pre-wrap;
+  background: $primary-color;
+  border-radius: $border-radius;
+  &.background-white {
+    background: $white;
+    color: $primary-color;
+  }
+  &.background-black {
+    background: $black;
+    color: $soft-color;
+  }
+  &__header {
+    padding: 10px 15px;
+    align-items: center;
+    border-radius: $border-radius;
+    background: rgba($soft-color, 0.2);
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(2, auto);
+  }
+  &__header--image {
+    margin-right: 10px;
+    grid-row-end: span 2;
+    background: $primary-color;
+  }
+  &__header--image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: $border-radius;
+  }
+  &__body, &__footer {
+    gap: 5px;
+  }
+  &:nth-child(2) {
+    align-self: center;
+  }
+  & .btn-link, .btn-link-soft {
+    padding: 0;
+    justify-self: left;
   }
 }

@@ -1,8 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import { useStateValue } from '../../Context';
 
 const Hero = require('../../static/assets/images/hero.svg');
+const User = require('../../static/assets/images/hero4.jpg');
 
 const Home = () => {
   const { theme } = useStateValue();
@@ -31,6 +33,7 @@ const Home = () => {
           </button>
         </div>
       </section>
+
       <section className={`FilterCard ${theme}`}>
         <form onSubmit={handleSubmit(onSubmit)} className='form-control'>
           <label htmlFor='LevelSelect'>
@@ -79,6 +82,119 @@ const Home = () => {
             Search
           </button>
         </form>
+      </section>
+
+      <section className='InformationCards'>
+        <div className={`Card ${theme}`}>
+          <div className='Card__header'>
+            <i className='fas fa-book' />
+            <h5>Get Starter</h5>
+          </div>
+          <div className='Card__body'>
+            <h6>Informatic Courses</h6>
+            <p>Like bussines analytics, graphic, desing, and more...</p>
+          </div>
+        </div>
+
+        <div className={`Card ${theme}`}>
+          <div className='Card__header'>
+            <i className='fas fa-atom' />
+            <h5>Research</h5>
+          </div>
+          <div className='Card__body'>
+            <h6>Lab innovation</h6>
+            <p>In high-demand fields like IT, AI and cloud engineering</p>
+          </div>
+        </div>
+
+        <div className={`Card ${theme}`}>
+          <div className='Card__header'>
+            <i className='fas fa-globe-americas' />
+            <h5>Remote Study</h5>
+          </div>
+          <div className='Card__body'>
+            <h6>Study from anywhere</h6>
+            <p>With on-demand training and development</p>
+          </div>
+        </div>
+      </section>
+
+      <section className='Schedules'>
+        <div className='Schedules__header'>
+          <h3>Class Schedules & upcoming couses on education</h3>
+          <p>87% of people learning for profesional development report career benefits like getting a promotion, a rise, or starting a ner career.</p>
+        </div>
+        <div className='Schedules__body'>
+          <div className='Schedules__body--first'>
+            <div className='Card2'>
+              <div className='Card2__header'>
+                <figure className='Card2__header--image'>
+                  <img src={User} alt='Avatar' />
+                </figure>
+                <p><strong>Pedro Gonzalez</strong></p>
+                <p>Lic. Maths</p>
+              </div>
+              <div className='Card2__body'>
+                <p><strong>Class Time</strong></p>
+                <h4>11:45 am</h4>
+                <p>Monday-Wednesday</p>
+              </div>
+              <div className='Card2__footer'>
+                <p>Class Reminder</p>
+                <div className='ToggleSwitch'>
+                  <button type='button' disabled className='ToggleSwitch--item active'>|</button>
+                  <button type='button' disabled className='ToggleSwitch--item'>o</button>
+                </div>
+              </div>
+            </div>
+
+            <div className='Card2'>
+              <div className='Card2__body'>
+                <div className='ToggleSwitch'>
+                  <button type='button' disabled className='ToggleSwitch--item active'>|</button>
+                  <button type='button' disabled className='ToggleSwitch--item'>o</button>
+                </div>
+                <p><strong>Class Time</strong></p>
+                <h4>Next week</h4>
+                <p>Monday-Wednesday</p>
+              </div>
+            </div>
+          </div>
+
+          <div className={`Card2 background-${theme === 'light' ? 'white' : 'black'}`}>
+            <div className='Card2__header'>
+              <figure className='Card2__header--icon'>
+                <i className='fas fa-shield-alt' />
+              </figure>
+            </div>
+            <div className='Card2__body'>
+              <p><strong>Money back guarantee</strong></p>
+              <p>Demonstrate your new skills by sharing your Course certificate. Profesional Certificate</p>
+            </div>
+            <div className='Card2__footer'>
+              <Link to='/' className={`btn-link${theme === 'light' ? '' : '-soft'}`}>Learn More</Link>
+            </div>
+          </div>
+
+          <div className='Schedules__body--last'>
+            <h6>Start streaming on-demand video lectures today from top instructors in subject like bussines</h6>
+            <p>87% of people learning for profesional development report career benefits like getting a promotion, a rise, or starting a ner career.</p>
+            <Link to='/' className={`btn-link${theme === 'light' ? '' : '-soft'}`}>
+              Explore
+              <i className='fas fa-angle-right' />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className=''>
+        <div className='__header'>
+          <h3>World-class learning for anyone, anyware</h3>
+          <p>We&apos;ve got the solution. Worl-class training and development programs developed by top universities and companies. All on Eduli from bussines</p>
+        </div>
+        {/* <div className='__body'>
+
+        </div> */}
       </section>
     </>
   );

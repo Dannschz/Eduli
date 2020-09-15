@@ -23,7 +23,7 @@ a {
   color: $tertiary-color;
 }
 
-.btn, .btn-primary, .btn-secondary, .btn-tertiary, .btn-acent, .btn-outline, .btn-outline-soft, .btn-link, .btn-link-soft {
+.btn, .btn-primary, .btn-secondary, .btn-tertiary, .btn-acent, .btn-danger, .btn-outline, .btn-outline-soft, .btn-link, .btn-link-soft {
   border: none;
   cursor: pointer;
   font-weight: 600;
@@ -89,5 +89,43 @@ a {
 body.dark {
   .form {
     @include formBasicDark();
+  }
+}
+
+.ToggleSwitch {
+  // background: $white;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  justify-items: center;
+  justify-self: left;
+  color: $primary-color;
+  box-shadow: $box-shadow;
+  & .ToggleSwitch--item {
+    padding: 2.5px 8px;
+    background: $gray-500;
+    width: 100%;
+    border: none;
+    transition: $transition-base;
+    &:hover {
+      transform: translateY(-0.5px);
+      background: $white;
+    }
+  }
+  & .ToggleSwitch--item:first-child {
+    justify-content: center;
+    align-items: center;
+    // background: $danger-color;
+    border-top-left-radius: $border-radius-sm;
+    border-bottom-left-radius: $border-radius;
+  }
+  & .ToggleSwitch--item:last-child {
+    font-size: $font-size-lg;
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius-sm;
+  }
+  & > .ToggleSwitch--item.active {
+    background: $neon;
+    color: $soft-color;
+    box-shadow: $box-shadow;
   }
 }
