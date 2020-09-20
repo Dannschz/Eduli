@@ -1,0 +1,53 @@
+.teacherPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+  margin-left: 5%;
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    padding: 20px 5px 35px 5px;
+
+    .teachTitle {
+      margin-right: 20px;
+    }
+
+    .addTeacherBtn {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: transparent;
+      width: 23%;
+      height: 4em;
+      padding: 10px;
+      background-color: rgb(24, 31, 90);
+      border-radius: 10px;
+      text-decoration: none;
+      color: rgb(238, 238, 238);
+      transition: background-color 100ms ease-in;
+
+      cursor: pointer;
+      transition: width 300ms;
+
+      img {
+        width: 36px;
+        height: 36px;
+      }
+
+      p {
+        display: inline-flex;
+        font-size: 1.3em;
+      }
+
+      &:hover {
+        transition: background-color 100ms ease-in;
+        background-color: rgb(38, 38, 102);
+      }
+    }
+  }
+}

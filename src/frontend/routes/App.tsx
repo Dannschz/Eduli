@@ -8,6 +8,8 @@ import Dashboard from '../pages/Manager/Dashboard';
 import Settings from '../pages/Manager/Settings';
 import Institute from '../pages/Institute/Institute';
 import Areas from '../pages/Institute/Areas';
+import Teacher from '../pages/Teacher/Teacher';
+import NewTeacher from '../pages/Teacher/NewTeacher';
 
 const App = () => {
   const { theme } = useStateValue();
@@ -25,6 +27,8 @@ const App = () => {
           <Route exact path='/institute/areas' component={Areas} />
           <Route exact path='/manager' component={Dashboard} />
           <Route exact path='/manager/settings' component={Settings} />
+          <Route exact path='/manager/teachers' component={Teacher} />
+          <Route exact path='/manager/teachers/new' component={NewTeacher} />
           <Route component={NotFound} />
         </Switch>
       </Layout>
