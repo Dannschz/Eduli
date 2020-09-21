@@ -1,16 +1,17 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useStateValue } from '../../Context';
 import './teacherForm.scss';
 
 export default function TeacherForm() {
-  const { theme } = useStateValue();
   const { register, handleSubmit, errors } = useForm();
+  const formSubmit = (data: FormData) => {
+    console.log(data);
+  };
 
   return (
     <div className='formTeacher'>
       <h1>Lets add our new teacher</h1>
-      <form className='form-control formT'>
+      <form className='form-control formT' onSubmit={handleSubmit(formSubmit)}>
         <label htmlFor='TeacherName'>
           <small className='form-description'>Nombre</small>
           <input
@@ -62,7 +63,7 @@ export default function TeacherForm() {
           <select
             id='TeacherLevel'
             name='teacherLevel'
-            className='form-select'
+            className='form-select background-none'
             ref={register({
               required: true,
               min: 1,
@@ -90,7 +91,7 @@ export default function TeacherForm() {
           <select
             id='TeacherGender'
             name='teacherGender'
-            className='form-select'
+            className='form-select background-none'
             ref={register({
               required: true,
               min: 1,
