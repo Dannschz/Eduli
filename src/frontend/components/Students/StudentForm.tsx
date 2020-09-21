@@ -1,23 +1,21 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import './teacherForm.scss';
+import './studentForm.scss';
 
-export default function TeacherForm() {
+export default function StudentForm() {
   const { register, handleSubmit, errors } = useForm();
   const formSubmit = (data: FormData) => {
     console.log(data);
   };
-
   return (
-    <div className='formTeacher'>
-      <h1>Lets add our new teacher</h1>
-      <form className='form-control formT' onSubmit={handleSubmit(formSubmit)}>
-        <label htmlFor='TeacherName'>
+    <div className='formStudentContainer'>
+      <form className='form-control formS' onSubmit={handleSubmit(formSubmit)}>
+        <label htmlFor='StudentName'>
           <small className='form-description'>Nombre</small>
           <input
             type='text'
-            id='TeacherName'
-            name='teacherName'
+            id='StudentName'
+            name='studentName'
             className='form-input'
             placeholder='Digite el nombre'
             ref={register({
@@ -28,20 +26,20 @@ export default function TeacherForm() {
           />
           <span
             className={`form-message text-${
-              errors?.teacherName ? 'danger' : 'gray-400'
+              errors?.studentName ? 'danger' : 'gray-400'
             }`}
           >
-            {errors?.teacherName && 'Nombre requerido'}
+            {errors?.studentName && 'Nombre requerido'}
           </span>
         </label>
 
         {/**   **/}
-        <label htmlFor='TeacherEmail'>
+        <label htmlFor='StudentEmail'>
           <small className='form-description'>Email</small>
           <input
+            id='StudentEmail'
             type='text'
-            id='teacherEmail'
-            name='teacherEmail'
+            name='studentEmail'
             className='form-input'
             placeholder='Digite el email'
             ref={register({
@@ -52,45 +50,17 @@ export default function TeacherForm() {
           />
           <span
             className={`form-message text-${
-              errors?.teacherEmail ? 'danger' : 'gray-400'
+              errors?.studentEmail ? 'danger' : 'gray-400'
             }`}
           >
-            {errors?.teacherEmail && 'Email requerido'}
+            {errors?.studentEmail && 'Email requerido'}
           </span>
         </label>
-        <label htmlFor='TeacherLevel'>
-          <small className='form-description'>Nivel Académico</small>
-          <select
-            id='TeacherLevel'
-            name='teacherLevel'
-            className='form-select background-none'
-            ref={register({
-              required: true,
-              min: 1,
-              maxLength: 80,
-            })}
-          >
-            <option value='Preescolar' defaultValue='Preescolar'>
-              Preescolar
-            </option>
-            <option value='Primaria'>Primaria</option>
-            <option value='Secundaria'>Secundaria</option>
-            <option value='Medio Superior'>Medio Superior</option>
-            <option value='Superior'>Superior</option>
-          </select>
-          <span
-            className={`form-message text-${
-              errors?.teacherLevel ? 'danger' : 'gray-400'
-            }`}
-          >
-            {errors?.teacherLevel && 'Nivel Académico requerido'}
-          </span>
-        </label>
-        <label htmlFor='TeacherGender'>
+        <label htmlFor='StudentGender'>
           <small className='form-description'>Genero</small>
           <select
-            id='TeacherGender'
-            name='teacherGender'
+            id='StudentGender'
+            name='studentGender'
             className='form-select background-none'
             ref={register({
               required: true,
@@ -106,18 +76,18 @@ export default function TeacherForm() {
           </select>
           <span
             className={`form-message text-${
-              errors?.teacherGender ? 'danger' : 'gray-400'
+              errors?.studentGender ? 'danger' : 'gray-400'
             }`}
           >
-            {errors?.teacherGender && 'Genero requerida'}
+            {errors?.studentGender && 'Genero requerida'}
           </span>
         </label>
-        <label htmlFor='TeacherPassword'>
+        <label htmlFor='StudentPassword'>
           <small className='form-description'>Contraseña</small>
           <input
             type='text'
-            id='TeacherPassword'
-            name='teacherPassword'
+            id='StudentPassword'
+            name='studentPassword'
             className='form-input'
             placeholder='Digite su Contraseña'
             ref={register({
@@ -128,10 +98,10 @@ export default function TeacherForm() {
           />
           <span
             className={`form-message text-${
-              errors?.teacherPassword ? 'danger' : 'gray-400'
+              errors?.studentPassword ? 'danger' : 'gray-400'
             }`}
           >
-            {errors?.teacherPassword && 'Password requerido'}
+            {errors?.studentPassword && 'Password requerido'}
           </span>
         </label>
         <button type='submit' className='form-button btn'>

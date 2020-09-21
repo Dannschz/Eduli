@@ -1,14 +1,14 @@
 import React from 'react';
-import TeacherForm from '../../components/Teacher/TeacherForm';
 import Sidenav from '../../components/Manager/Sidenav/Sidenav';
 import Toolbar from '../../components/Manager/Toolbar/Toolbar';
+import StudentForm from '../../components/Students/StudentForm';
 
-export default function NewTeacher() {
+export default function NewStudent() {
   return (
     <>
       <Toolbar />
       <Sidenav />
-      <TeacherForm />
+      <StudentForm />
     </>
   );
 }

@@ -10,6 +10,8 @@ import Institute from '../pages/Institute/Institute';
 import Areas from '../pages/Institute/Areas';
 import Teacher from '../pages/Teacher/Teacher';
 import NewTeacher from '../pages/Teacher/NewTeacher';
+import Students from '../pages/Students/Students';
+import NewStudent from '../pages/Students/NewStudent';
 
 const App = () => {
   const { theme } = useStateValue();
@@ -29,6 +31,8 @@ const App = () => {
           <Route exact path='/manager/settings' component={Settings} />
           <Route exact path='/manager/teachers' component={Teacher} />
           <Route exact path='/manager/teachers/new' component={NewTeacher} />
+          <Route exact path='/institute/students' component={Students} />
+          <Route exact path='/institute/students/new' component={NewStudent} />
           <Route component={NotFound} />
         </Switch>
       </Layout>

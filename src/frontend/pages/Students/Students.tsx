@@ -1,14 +1,16 @@
 import React from 'react';
-import TeacherForm from '../../components/Teacher/TeacherForm';
 import Sidenav from '../../components/Manager/Sidenav/Sidenav';
 import Toolbar from '../../components/Manager/Toolbar/Toolbar';
+import './students.scss';
 
-export default function NewTeacher() {
+export default function Students() {
   return (
     <>
       <Toolbar />
       <Sidenav />
-      <TeacherForm />
+      <div className='studentsContainer'>
+        <h1>Aquí van los estudiates</h1>
+      </div>
     </>
   );
 }
